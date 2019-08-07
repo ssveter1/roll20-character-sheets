@@ -359,6 +359,7 @@ input.sheet-tab3:not(:checked) ~ .sheet-tab3,
 input.sheet-tab4:not(:checked) ~ .sheet-tab4,
 input.sheet-tab5:not(:checked) ~ .sheet-tab5,
 input.sheet-tab6:not(:checked) ~ .sheet-tab6,
+input.sheet-tab-npc:not(:checked) ~ .sheet-tab-npc,
 input.sheet-tab7:not(:checked) ~ .sheet-tab7,
 input.sheet-tab0:not(:checked) ~ .sheet-tab0 {
     display: none;
@@ -2035,4 +2036,63 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 .sheet-logo div.sheet-control button[type=roll].sheet-no-decoration::before {
     content: none;
+}
+
+/*=========== NPC TAB ===============*/
+/* see: https://www.w3schools.com/howto/howto_css_three_columns.asp */
+
+.sheet-tab-npc .sheet-column {
+    float: left;
+    height: 600px; /* TODO: remove, used for testing */
+}
+
+.sheet-tab-npc .sheet-column.sheet-left {
+    width: 190px;
+    background-color:#aaa;
+}
+
+.sheet-tab-npc .sheet-column.sheet-middle {
+    width: 50%;
+    background-color:#bbb;
+}
+
+.sheet-tab-npc .sheet-column.sheet-right {
+    width: 25%;
+    background-color:#ccc;
+}
+
+/* clear floats after the columns */
+.sheet-tab-npc .sheet-column .sheet-npc-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.sheet-tab-npc .sheet-npc-attribute .sheet-large-text {
+    font-size: 20px;
+}
+
+/* --- column one content --- */
+.sheet-tab-npc .sheet-npc-attribute .sheet-col-name {
+    width: 50px;
+}
+
+.sheet-tab-npc .sheet-npc-attribute .sheet-col-level {
+    width: 35px;
+}
+
+.sheet-tab-npc .sheet-npc-attribute .sheet-col-mod {
+    width: 35px;
+}
+
+.sheet-tab-npc .sheet-npc-attribute .sheet-col-pts {
+    width: 35px;
+}
+
+.sheet-tab-npc .sheet-npc-attribute .sheet-col-dice {
+    width: 30px;
+}
+
+.sheet-tab-npc .sheet-npc-attribute .sheet-col-damage {
+    width: 105px;
 }
