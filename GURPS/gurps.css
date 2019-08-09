@@ -359,7 +359,7 @@ input.sheet-tab3:not(:checked) ~ .sheet-tab3,
 input.sheet-tab4:not(:checked) ~ .sheet-tab4,
 input.sheet-tab5:not(:checked) ~ .sheet-tab5,
 input.sheet-tab6:not(:checked) ~ .sheet-tab6,
-input.sheet-tab-npc:not(:checked) ~ .sheet-tab-npc,
+input.sheet-tab-npc-container:not(:checked) ~ .sheet-tab-npc-container,
 input.sheet-tab7:not(:checked) ~ .sheet-tab7,
 input.sheet-tab0:not(:checked) ~ .sheet-tab0 {
     display: none;
@@ -2041,58 +2041,110 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 /*=========== NPC TAB ===============*/
 /* see: https://www.w3schools.com/howto/howto_css_three_columns.asp */
 
-.sheet-tab-npc .sheet-column {
-    float: left;
-    height: 600px; /* TODO: remove, used for testing */
-}
-
-.sheet-tab-npc .sheet-column.sheet-left {
-    width: 190px;
-    background-color:#aaa;
-}
-
-.sheet-tab-npc .sheet-column.sheet-middle {
-    width: 50%;
-    background-color:#bbb;
-}
-
-.sheet-tab-npc .sheet-column.sheet-right {
-    width: 25%;
-    background-color:#ccc;
-}
-
-/* clear floats after the columns */
-.sheet-tab-npc .sheet-column .sheet-npc-row:after {
+.sheet-tab-npc-container:after {
     content: "";
     display: table;
     clear: both;
 }
 
-.sheet-tab-npc .sheet-npc-attribute .sheet-large-text {
+.sheet-tab-npc-container .sheet-column {
+    float: left;
+}
+
+.sheet-tab-npc-container .sheet-column.sheet-npc-left {
+    width: 190px;
+}
+
+.sheet-tab-npc-container .sheet-column.sheet-npc-middle {
+    width: 50%;
+    background-color:#bbb;
+}
+
+.sheet-tab-npc-container .sheet-column.sheet-npc-right {
+    width: 25%;
+    background-color:#ccc;
+}
+
+.sheet-tab-npc-container .sheet-column .sheet-column-header {
+    background: black;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.sheet-tab-npc-container .sheet-npc-attribute input {
+    width: 100%;
+    padding: 0 2px;
+    line-height: 22px;
+    border: none;
+    text-align: center;
+    margin-top: -2px;
+    cursor: initial;
+    background: transparent;
+}
+
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-large-text,
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-large-text input {
     font-size: 20px;
 }
 
+.sheet-tab-npc-container .sheet-npc-attribute input[readonly="readonly"] {
+    background-color: #c9c9c9;
+}
+
+/* hide input number spinners */
+
+/* chrome */
+.sheet-tab-npc-container .sheet-npc-attribute input::-webkit-inner-spin-button,
+.sheet-tab-npc-container .sheet-npc-attribute input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* firefox */
+.sheet-tab-npc-container .sheet-npc-attribute input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.sheet-tab-npc-container .sheet-npc-attribute input:read-write {
+    border-bottom: 1px solid black;
+}
+
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-npc-row {
+    height: 30px;
+}
+
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-npc-row.sheet-ruler {
+    box-shadow: 0 -1px 0 #000;
+    padding-top: 5px;
+}
+
+
 /* --- column one content --- */
-.sheet-tab-npc .sheet-npc-attribute .sheet-col-name {
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-col-name {
     width: 50px;
 }
 
-.sheet-tab-npc .sheet-npc-attribute .sheet-col-level {
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-col-level {
     width: 35px;
 }
 
-.sheet-tab-npc .sheet-npc-attribute .sheet-col-mod {
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-col-mod {
     width: 35px;
 }
 
-.sheet-tab-npc .sheet-npc-attribute .sheet-col-pts {
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-col-pts {
     width: 35px;
 }
 
-.sheet-tab-npc .sheet-npc-attribute .sheet-col-dice {
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-col-dice {
     width: 30px;
 }
 
-.sheet-tab-npc .sheet-npc-attribute .sheet-col-damage {
+.sheet-tab-npc-container .sheet-npc-attribute .sheet-col-damage {
     width: 105px;
 }

@@ -41,7 +41,7 @@
 	<input type="radio" name="attr_tab" value="4" class="sheet-tab sheet-tab4" /><span>Combat</span>
 	<input type="radio" name="attr_tab" value="5" class="sheet-tab sheet-tab5" /><span>Inventory</span>
 	<input type="radio" name="attr_tab" value="6" class="sheet-tab sheet-tab6" /><span>Grimoire</span>
-	<input type="radio" name="attr_tab" value="8" class="tab tab-npc" /><span>NPC</span>
+	<input type="radio" name="attr_tab" value="8" class="tab sheet-tab-npc-container" /><span>NPC</span>
 	<input type="radio" name="attr_tab" value="7" class="sheet-tab sheet-tab7" /><span>Updates</span>
 	<input type="radio" name="attr_tab" value="0" class="sheet-tab sheet-tab0" /><span title="Sheet Options">y</span>
 	<div class="sheet-tab-br"></div>
@@ -3890,417 +3890,413 @@
 	</div> <!-- .sheet-tab6 -->
 
     <!-- ===== ===== ===== ===== NPC TAB ===== ===== ===== ===== -->
-	<div class="tab-npc">
+	<div class="tab-npc-container">
 	    
-	    <div class="npc-row">
-	        
-	        <div class="column left">
-	            
-	            <!-- _____ _____ NPC ATTRIBUTE BOX _____ _____ -->
-		        <div class="box npc-attribute">
-			        <div class="table">
-			            
-			            <div class="header">
-			                <b>Attributes</b>
-			            </div>
-        				
-        				<div class="header">
-        					<div class="cell col-name">&nbsp;</div>
-        					<div class="cell col-level">Lvl</div>
-        					<div class="cell col-mod">
-        						<div class="popup">Mod</div>
-        						<span class="tooltip">
-        							A modifier that will be applied to your 
-        							<br />
-        							attribute. All derived attributes draw their<br />
-        							base from your  unmodified attributes.<br />
-        							Therefore this MOD will generally only<br /> 
-        							affect direct attribute rolls and skill rolls.
-        						</span>
-        					</div>
-        					<div class="cell col-pts">Pts</div>
-        					<div class="cell col-dice">&nbsp;</div>
-        				</div> <!-- .sheet-header -->
+        <div class="column npc-left">
+            
+            <!-- _____ _____ NPC ATTRIBUTE BOX _____ _____ -->
+	        <div class="box npc-attribute">
+		        <div class="table">
+		            
+		            <div class="column-header">
+		                <b>Attributes</b>
+		            </div>
+    				
+    				<div class="header">
+    					<div class="cell col-name">&nbsp;</div>
+    					<div class="cell col-level">Lvl</div>
+    					<div class="cell col-mod">
+    						<div class="popup">Mod</div>
+    						<span class="tooltip">
+    							A modifier that will be applied to your 
+    							<br />
+    							attribute. All derived attributes draw their<br />
+    							base from your  unmodified attributes.<br />
+    							Therefore this MOD will generally only<br /> 
+    							affect direct attribute rolls and skill rolls.
+    						</span>
+    					</div>
+    					<div class="cell col-pts">Pts</div>
+    					<div class="cell col-dice">&nbsp;</div>
+    				</div> <!-- .sheet-header -->
+			
+					<div class="npc-row row-strength">
+						<div class="cell col-name label large-text">
+							<div class="popup">ST</div>
+							<span class="tooltip">
+								Strength
+								<br />
+								10pts/level
+								<br />
+								Unmodified <span name="attr_strength_base"></span>
+							</span>
+						</div>
+						<div class="cell col-level large-text">
+							<input type="text" name="attr_strength" value="10" readonly="readonly" >
+						</div>
+						<div class="cell col-mod">
+							<input type="number" name="attr_strength_mod" value="0" step="1" />
+						</div>
+						<div class="cell col-pts">
+							<input type="number" name="attr_strength_points" value="0" step="10" />
+						</div>
+						<div class="cell col-dice">
+							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Strength Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{strength} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsST" />
+						</div>
+					</div> <!-- .sheet-row -->
 				
-    					<div class="row row-strength">
-    						<div class="cell col-name label large-text">
-    							<div class="popup">ST</div>
-    							<span class="tooltip">
-    								Strength
-    								<br />
-    								10pts/level
-    								<br />
-    								Unmodified <span name="attr_strength_base"></span>
-    							</span>
-    						</div>
-    						<div class="cell col-level large-text">
-    							<input type="number" name="attr_strength" value="10" readonly="readonly" >
-    						</div>
-    						<div class="cell col-mod">
-    							<input type="number" name="attr_strength_mod" value="0" step="1" />
-    						</div>
-    						<div class="cell col-pts">
-    							<input type="number" name="attr_strength_points" value="0" step="10" />
-    						</div>
-    						<div class="cell col-dice">
-    							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Strength Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{strength} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsST" />
-    						</div>
-    					</div> <!-- .sheet-row -->
+					<div class="npc-row row-dexterity">
+						<div class="cell col-name label large-text">
+							<div class="popup">DX</div>
+							<span class="tooltip">
+								Dexterity
+								<br />
+								20pts/level
+								<br />
+								Unmodified: <span name="attr_dexterity_base"></span>
+							</span>
+						</div>
+						<div class="cell col-level large-text">
+							<input type="text" name="attr_dexterity" value="10" readonly="readonly" >
+						</div>
+						<div class="cell col-mod">
+							<input type="number" name="attr_dexterity_mod" value="0" step="1" />
+						</div>
+						<div class="cell col-pts">
+							<input type="number" name="attr_dexterity_points" value="0" step="20" />
+						</div>
+						<div class="cell col-dice">
+							<button type="roll" value="&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Dexterity Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{dexterity} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsDX" />
+						</div>
+					</div> <!-- .sheet-row -->
+				
+					<div class="npc-row row-intelligence">
+						<div class="cell col-name label large-text">
+							<div class="popup">IQ</div>
+							<span class="tooltip">
+								Intelligence
+								<br />
+								20pts/level
+								<br />
+								Unmodified: <span name="attr_intelligence_base"></span>
+							</span>
+						</div>
+						<div class="cell col-level large-text">
+							<input type="text" name="attr_intelligence" value="10" readonly="readonly" >
+						</div>
+						<div class="cell col-mod">
+							<input type="number" name="attr_intelligence_mod" value="0" step="1" />
+						</div>
+						<div class="cell col-pts">
+							<input type="number" name="attr_intelligence_points" value="0" step="20" />
+						</div>
+						<div class="cell col-dice">
+							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Intelligence Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{intelligence} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsIQ" />
+						</div>
+					</div> <!-- .sheet-row -->
+				
+					<div class="npc-row row-health">
+						<div class="cell col-name label large-text">
+							<div class="popup">HT</div>
+							<span class="tooltip">
+								Health
+								<br />
+								10pts/level
+								<br />
+								Unmodified: <span name="attr_health_base"></span>
+							</span>
+						</div>
+						<div class="cell col-level large-text">
+							<input type="text" name="attr_health" value="10" readonly="readonly" >
+						</div>
+						<div class="cell col-mod">
+							<input type="number" name="attr_health_mod" value="0" step="1" />
+						</div>
+						<div class="cell col-pts">
+							<input type="number" name="attr_health_points" value="0" step="10" />
+						</div>
+						<div class="cell col-dice">
+							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Health Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{health} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsHT" />
+						</div>
+					</div> <!-- .sheet-row -->
+				
+    				<div class="npc-row row-perception">
+    					<div class="cell col-name label large-text">
+    						<div class="popup">Per</div>
+    						<span class="tooltip">
+    							Perception
+    							<br />
+    							Based on Intelligence
+    							<br />
+    							5pts/level
+    							<br />
+    							Unmodified: <span name="attr_perception_base"></span>
+    						</span>
+    					</div>
+    					<div class="cell col-level large-text">
+    						<input type="text" name="attr_perception" value="10" readonly="readonly" >
+    					</div>
+    					<div class="cell col-mod">
+    						<input type="number" name="attr_perception_mod" value="0" step="1" />
+    					</div>
+    					<div class="cell col-pts">
+    						<input type="number" name="attr_perception_points" value="0" step="5" />
+    					</div>
+    					<div class="cell col-dice">
+    						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Perception Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{perception} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsPer" />
+    					</div>
+    				</div> <!-- .sheet-row -->
     				
-    					<div class="row row-dexterity">
-    						<div class="cell col-name label large-text">
-    							<div class="popup">DX</div>
-    							<span class="tooltip">
-    								Dexterity
-    								<br />
-    								20pts/level
-    								<br />
-    								Unmodified: <span name="attr_dexterity_base"></span>
-    							</span>
-    						</div>
-    						<div class="cell col-level large-text">
-    							<input type="number" name="attr_dexterity" value="10" readonly="readonly" >
-    						</div>
-    						<div class="cell col-mod">
-    							<input type="number" name="attr_dexterity_mod" value="0" step="1" />
-    						</div>
-    						<div class="cell col-pts">
-    							<input type="number" name="attr_dexterity_points" value="0" step="20" />
-    						</div>
-    						<div class="cell col-dice">
-    							<button type="roll" value="&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Dexterity Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{dexterity} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsDX" />
-    						</div>
-    					</div> <!-- .sheet-row -->
+    				<div class="npc-row row-willpower">
+    					<div class="cell col-name label large-text">
+    						<div class="popup">Will</div>
+    						<span class="tooltip">
+    							Willpower
+    							<br />
+    							Based on Intelligence
+    							<br />
+    							5pts/level
+    							<br />
+    							Unmodified: <span name="attr_willpower_base"></span>
+    						</span>
+    					</div>
+    					<div class="cell col-level large-text">
+    						<input type="text" name="attr_willpower" value="10" readonly="readonly" >
+    					</div>
+    					<div class="cell col-mod">
+    						<input type="number" name="attr_willpower_mod" value="0" step="1" />
+    					</div>
+    					<div class="cell col-pts">
+    						<input type="number" name="attr_willpower_points" value="0" step="5" />
+    					</div>
+    					<div class="cell col-dice">
+    						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Will Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{willpower} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsWill" />
+    					</div>
+    				</div> <!-- .sheet-row -->
     				
-    					<div class="row row-intelligence">
-    						<div class="cell col-name label large-text">
-    							<div class="popup">IQ</div>
-    							<span class="tooltip">
-    								Intelligence
-    								<br />
-    								20pts/level
-    								<br />
-    								Unmodified: <span name="attr_intelligence_base"></span>
-    							</span>
-    						</div>
-    						<div class="cell col-level large-text">
-    							<input type="number" name="attr_intelligence" value="10" readonly="readonly" >
-    						</div>
-    						<div class="cell col-mod">
-    							<input type="number" name="attr_intelligence_mod" value="0" step="1" />
-    						</div>
-    						<div class="cell col-pts">
-    							<input type="number" name="attr_intelligence_points" value="0" step="20" />
-    						</div>
-    						<div class="cell col-dice">
-    							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Intelligence Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{intelligence} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsIQ" />
-    						</div>
-    					</div> <!-- .sheet-row -->
+    				<div class="npc-row row-basic-speed ruler">
+    					<div class="cell col-name label">
+    						<div class="popup">Speed</div>
+    						<span class="tooltip">
+    							Basic Speed
+    							<br />
+    							Based on Health and Dexterity
+    							<br />
+    							5pts/0.25
+    							<br />
+    							Unmodified: <span name="attr_basic_speed_base" value="10"></span>
+    						</span>
+    					</div>
+    					<div class="cell col-level">
+    						<input type="text" name="attr_basic_speed" value="" step="0.25" readonly="readonly" >
+    					</div>
+    					<div class="cell col-mod">
+    						<input type="number" name="attr_basic_speed_mod" value="0" step="0.25" />
+    					</div>
+    					<div class="cell col-pts">
+    						<input type="number" name="attr_basic_speed_points" value="0" step="5" />
+    					</div>
+    					<div class="cell col-dice">
+    						<button class="sheet-roll-tracker" type="roll" value="@{speed_tracker} [[@{basic_speed} &{tracker}]] &{template:addToTracker} {{characterName=@{character_name}}} {{basicSpeed=@{basic_speed}}}" name="roll_init" />
+    					</div>
+    				</div> <!-- .sheet-row -->
     				
-    					<div class="row row-health">
-    						<div class="cell col-name label large-text">
-    							<div class="popup">HT</div>
-    							<span class="tooltip">
-    								Health
-    								<br />
-    								10pts/level
-    								<br />
-    								Unmodified: <span name="attr_health_base"></span>
-    							</span>
-    						</div>
-    						<div class="cell col-level large-text">
-    							<input type="number" name="attr_health" value="10" readonly="readonly" >
-    						</div>
-    						<div class="cell col-mod">
-    							<input type="number" name="attr_health_mod" value="0" step="1" />
-    						</div>
-    						<div class="cell col-pts">
-    							<input type="number" name="attr_health_points" value="0" step="10" />
-    						</div>
-    						<div class="cell col-dice">
-    							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Health Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{health} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsHT" />
-    						</div>
-    					</div> <!-- .sheet-row -->
+    				<div class="npc-row row-basic-move">
+    					<div class="cell col-name label">
+    						<div class="popup">Move</div>
+    						<span class="tooltip">
+    							Basic Move
+    							<br />
+    							Based on Basic Speed
+    							<br />
+    							5pts/level
+    							<br />
+    							Unmodified: <span name="attr_basic_move_base" value="0"></span>
+    						</span>
+    					</div>
+    					<div class="cell col-level">
+    						<input type="text" name="attr_basic_move" value="" readonly="readonly" >
+    					</div>
+    					<div class="cell col-mod">
+    						<input type="number" name="attr_basic_move_mod" value="0" step="1" />
+    					</div>
+    					<div class="cell col-pts">
+    						<input type="number" name="attr_basic_move_points" value="0" step="5" />
+    					</div>
+    					<div class="cell col-dice">&nbsp;</div>
+    				</div> <!-- .sheet-row -->
     				
-        				<div class="row row-perception">
-        					<div class="cell col-name label large-text">
-        						<div class="popup">Per</div>
-        						<span class="tooltip">
-        							Perception
-        							<br />
-        							Based on Intelligence
-        							<br />
-        							5pts/level
-        							<br />
-        							Unmodified: <span name="attr_perception_base"></span>
-        						</span>
-        					</div>
-        					<div class="cell col-level large-text">
-        						<input type="number" name="attr_perception" value="10" readonly="readonly" >
-        					</div>
-        					<div class="cell col-mod">
-        						<input type="number" name="attr_perception_mod" value="0" step="1" />
-        					</div>
-        					<div class="cell col-pts">
-        						<input type="number" name="attr_perception_points" value="0" step="5" />
-        					</div>
-        					<div class="cell col-dice">
-        						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Perception Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{perception} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsPer" />
-        					</div>
-        				</div> <!-- .sheet-row -->
-        				
-        				<div class="row row-willpower">
-        					<div class="cell col-name label large-text">
-        						<div class="popup">Will</div>
-        						<span class="tooltip">
-        							Willpower
-        							<br />
-        							Based on Intelligence
-        							<br />
-        							5pts/level
-        							<br />
-        							Unmodified: <span name="attr_willpower_base"></span>
-        						</span>
-        					</div>
-        					<div class="cell col-level large-text">
-        						<input type="number" name="attr_willpower" value="10" readonly="readonly" >
-        					</div>
-        					<div class="cell col-mod">
-        						<input type="number" name="attr_willpower_mod" value="0" step="1" />
-        					</div>
-        					<div class="cell col-pts">
-        						<input type="number" name="attr_willpower_points" value="0" step="5" />
-        					</div>
-        					<div class="cell col-dice">
-        						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Will Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{willpower} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsWill" />
-        					</div>
-        				</div> <!-- .sheet-row -->
-        				
-        				<div class="row row-basic-speed hr">
-        					<div class="cell col-name label">
-        						<div class="popup">Speed</div>
-        						<span class="tooltip">
-        							Basic Speed
-        							<br />
-        							Based on Health and Dexterity
-        							<br />
-        							5pts/0.25
-        							<br />
-        							Unmodified: <span name="attr_basic_speed_base" value="10"></span>
-        						</span>
-        					</div>
-        					<div class="cell col-level">
-        						<input type="number" name="attr_basic_speed" value="" step="0.25" readonly="readonly" >
-        					</div>
-        					<div class="cell col-mod">
-        						<input type="number" name="attr_basic_speed_mod" value="0" step="0.25" />
-        					</div>
-        					<div class="cell col-pts">
-        						<input type="number" name="attr_basic_speed_points" value="0" step="5" />
-        					</div>
-        					<div class="cell col-dice">
-        						<button class="sheet-roll-tracker" type="roll" value="@{speed_tracker} [[@{basic_speed} &{tracker}]] &{template:addToTracker} {{characterName=@{character_name}}} {{basicSpeed=@{basic_speed}}}" name="roll_init" />
-        					</div>
-        				</div> <!-- .sheet-row -->
-        				
-        				<div class="row row-basic-move">
-        					<div class="cell col-name label">
-        						<div class="popup">Move</div>
-        						<span class="tooltip">
-        							Basic Move
-        							<br />
-        							Based on Basic Speed
-        							<br />
-        							5pts/level
-        							<br />
-        							Unmodified: <span name="attr_basic_move_base" value="0"></span>
-        						</span>
-        					</div>
-        					<div class="cell col-level">
-        						<input type="number" name="attr_basic_move" value="" readonly="readonly" >
-        					</div>
-        					<div class="cell col-mod">
-        						<input type="number" name="attr_basic_move_mod" value="0" step="1" />
-        					</div>
-        					<div class="cell col-pts">
-        						<input type="number" name="attr_basic_move_points" value="0" step="5" />
-        					</div>
-        					<div class="cell col-dice">&nbsp;</div>
-        				</div> <!-- .sheet-row -->
-        				
-        				<div class="row margin-bottom row-dodge">
-        					<div class="cell col-name label">
-        						<div class="popup">Dodge</div>
-        						<span class="tooltip">
-        							Dodge
-        							<br />
-        							Based on Basic Speed
-        							<br />
-        							Unmodified: <span name="attr_dodge_base" value="0"></span>
-        						</span>
-        					</div>
-        					<div class="cell col-level">
-        						<input type="number" name="attr_dodge" value="" readonly="readonly" >
-        					</div>
-        					<div class="cell col-mod">
-        						<input type="number" name="attr_dodge_mod" value="0" step="1" />
-        					</div>
-        					<div class="cell col-pts">&nbsp;</div>
-        					<div class="cell col-dice">&nbsp;</div>
-        				</div> <!-- .sheet-row -->
-        				
-        				<div class="row row-strike-st hr">
-        					<div class="cell col-name label">
-        						<div class="popup">Striking</div>
-        						<span class="tooltip">
-        							Striking Strength
-        							<br />
-        							Based on Strength
-        							<br />
-        							5pts/level
-        							<br />
-        							Unmodified: <input class="inline" type="number" name="attr_striking_st_base" readonly="readonly" >
-        						</span>
-        					</div>
-        					<div class="cell col-level">
-        						<input type="number" name="attr_striking_st" value="0" readonly="readonly" >
-        					</div>
-        					<div class="cell col-mod">
-        						<input type="number" name="attr_striking_st_mod" value="0" step="1" />
-        					</div>
-        					<div class="cell col-pts">
-        						<input type="number" name="attr_striking_st_points" value="0" step="5" />
-        					</div>
-        					<div class="cell col-dice">&nbsp;</div>
-        				</div> <!-- .sheet-row -->
-        				
-        				<div class="row row-thrust-damage">
-        					<div class="cell col-name label">
-        						<div class="popup">Thrust</div>
-        						<span class="tooltip">
-        							Thrust Damage
-        							<br />
-        							<div>See page 16 for the complete table.</div>
-        							<table>
-        								<thead><tr><th>Strength</th><th>Thrust</th></tr></thead>
-        								<tbody>
-        									<tr><td>1</td><td>1d6-6</td></tr>
-        									<tr><td>2</td><td>1d6-6</td></tr>
-        									<tr><td>3</td><td>1d6-5</td></tr>
-        									<tr><td>4</td><td>1d6-5</td></tr>
-        									<tr><td>5</td><td>1d6-4</td></tr>
-        									<tr><td>6</td><td>1d6-4</td></tr>
-        									<tr><td>7</td><td>1d6-3</td></tr>
-        									<tr><td>8</td><td>1d6-3</td></tr>
-        									<tr><td>9</td><td>1d6-2</td></tr>
-        									<tr><td>10</td><td>1d6-2</td></tr>
-        									<tr><td>11</td><td>1d6-1</td></tr>
-        									<tr><td>12</td><td>1d6-1</td></tr>
-        									<tr><td>13</td><td>1d6</td></tr>
-        								</tbody>
-        							</table>
-        							<table>
-        								<thead><tr><th>Strength</th><th>Thrust</th></tr></thead>
-        								<tbody>
-        									<tr><td>14</td><td>1d6</td></tr>
-        									<tr><td>15</td><td>1d6+1</td></tr>
-        									<tr><td>16</td><td>1d6+1</td></tr>
-        									<tr><td>17</td><td>1d6+2</td></tr>
-        									<tr><td>18</td><td>1d6+2</td></tr>
-        									<tr><td>19</td><td>2d6-1</td></tr>
-        									<tr><td>20</td><td>2d6-1</td></tr>
-        									<tr><td>21</td><td>2d6</td></tr>
-        									<tr><td>22</td><td>2d6</td></tr>
-        									<tr><td>23</td><td>2d6+1</td></tr>
-        									<tr><td>24</td><td>2d6+1</td></tr>
-        									<tr><td>25</td><td>2d6+2</td></tr>
-        									<tr><td>26</td><td>2d6+2</td></tr>
-        								</tbody>
-        							</table>
-        						</span>
-        					</div>
-        					<div class="cell col-damage">
-        						<input type="text" name="attr_thrust" value="1d6-2" />
-        					</div>
-        					<div class="cell col-dice">
-        					    <input type="hidden" name="attr_thrust_damage_dice_icon" class="thrust-damage-dice-icon" value="explode" />
-        						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Damage Roll}} {{characterName=@{character_name}}} {{skillName=Thrust Damage}} {{damageRoll=[[@{thrust}]]}}" name="roll_dmgThrust" class="roll_damage" />
-        					</div>
-        				</div> <!-- .sheet-row -->
-        				
-        				<div class="row margin-bottom row-swing-damage">
-        				    <div class="cell col-name label">
-        						<div class="popup">Swing</div>
-        						<span class="tooltip">
-        							Swing Damage
-        							<br />
-        							<div>See page 16 for the complete table.</div>
-        							<table>
-        								<thead><tr><th>Strength</th><th>Swing</th></tr></thead>
-        								<tbody>
-        									<tr><td>1</td><td>1d6-5</td></tr>
-        									<tr><td>2</td><td>1d6-5</td></tr>
-        									<tr><td>3</td><td>1d6-4</td></tr>
-        									<tr><td>4</td><td>1d6-4</td></tr>
-        									<tr><td>5</td><td>1d6-3</td></tr>
-        									<tr><td>6</td><td>1d6-3</td></tr>
-        									<tr><td>7</td><td>1d6-2</td></tr>
-        									<tr><td>8</td><td>1d6-2</td></tr>
-        									<tr><td>9</td><td>1d6-1</td></tr>
-        									<tr><td>10</td><td>1d6</td></tr>
-        									<tr><td>11</td><td>1d6+1</td></tr>
-        									<tr><td>12</td><td>1d6+2</td></tr>
-        									<tr><td>13</td><td>2d6-1</td></tr>
-        								</tbody>
-        							</table>
-        							<table>
-        								<thead><tr><th>Strength</th><th>Swing</th></tr></thead>
-        								<tbody>
-        									<tr><td>14</td><td>2d6</td></tr>
-        									<tr><td>15</td><td>2d6+1</td></tr>
-        									<tr><td>16</td><td>2d6+2</td></tr>
-        									<tr><td>17</td><td>3d6-1</td></tr>
-        									<tr><td>18</td><td>3d6</td></tr>
-        									<tr><td>19</td><td>3d6+1</td></tr>
-        									<tr><td>20</td><td>3d6+2</td></tr>
-        									<tr><td>21</td><td>4d6-1</td></tr>
-        									<tr><td>22</td><td>4d6</td></tr>
-        									<tr><td>23</td><td>4d6+1</td></tr>
-        									<tr><td>24</td><td>4d6+2</td></tr>
-        									<tr><td>25</td><td>5d6-1</td></tr>
-        									<tr><td>26</td><td>5d6</td></tr>
-        								</tbody>
-        							</table>
-        						</span>
-        					</div>
-        					<div class="cell col-damage">
-        						<input type="text" name="attr_swing" value="1d6" />
-        					</div>
-        					<div class="cell col-dice">
-        						<input type="hidden" name="attr_swing_damage_dice_icon" class="swing-damage-dice-icon" value="explode" />
-        						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Damage Roll}} {{characterName=@{character_name}}} {{skillName=Swing Damage}} {{damageRoll=[[@{swing}]]}}" name="roll_dmgSwing" class="roll_damage" />
-        					</div>
-        				</div> <!-- .sheet-row -->
-        				
-			        </div> <!-- .sheet-table -->
-		        
-		        </div>
-		        <!-- END NPC ATTRIBUTE BOX -->
-	            
-	        </div>
+    				<div class="npc-row margin-bottom row-dodge">
+    					<div class="cell col-name label">
+    						<div class="popup">Dodge</div>
+    						<span class="tooltip">
+    							Dodge
+    							<br />
+    							Based on Basic Speed
+    							<br />
+    							Unmodified: <span name="attr_dodge_base" value="0"></span>
+    						</span>
+    					</div>
+    					<div class="cell col-level">
+    						<input type="text" name="attr_dodge" value="" readonly="readonly" >
+    					</div>
+    					<div class="cell col-mod">
+    						<input type="number" name="attr_dodge_mod" value="0" step="1" />
+    					</div>
+    					<div class="cell col-pts">&nbsp;</div>
+    					<div class="cell col-dice">&nbsp;</div>
+    				</div> <!-- .sheet-row -->
+    				
+    				<div class="npc-row row-strike-st ruler">
+    					<div class="cell col-name label">
+    						<div class="popup">Striking</div>
+    						<span class="tooltip">
+    							Striking Strength
+    							<br />
+    							Based on Strength
+    							<br />
+    							5pts/level
+    							<br />
+    							Unmodified: <input class="inline" type="number" name="attr_striking_st_base" readonly="readonly" >
+    						</span>
+    					</div>
+    					<div class="cell col-level">
+    						<input type="text" name="attr_striking_st" value="0" readonly="readonly" >
+    					</div>
+    					<div class="cell col-mod">
+    						<input type="number" name="attr_striking_st_mod" value="0" step="1" />
+    					</div>
+    					<div class="cell col-pts">
+    						<input type="number" name="attr_striking_st_points" value="0" step="5" />
+    					</div>
+    					<div class="cell col-dice">&nbsp;</div>
+    				</div> <!-- .sheet-row -->
+    				
+    				<div class="npc-row row-thrust-damage">
+    					<div class="cell col-name label">
+    						<div class="popup">Thrust</div>
+    						<span class="tooltip">
+    							Thrust Damage
+    							<br />
+    							<div>See page 16 for the complete table.</div>
+    							<table>
+    								<thead><tr><th>Strength</th><th>Thrust</th></tr></thead>
+    								<tbody>
+    									<tr><td>1</td><td>1d6-6</td></tr>
+    									<tr><td>2</td><td>1d6-6</td></tr>
+    									<tr><td>3</td><td>1d6-5</td></tr>
+    									<tr><td>4</td><td>1d6-5</td></tr>
+    									<tr><td>5</td><td>1d6-4</td></tr>
+    									<tr><td>6</td><td>1d6-4</td></tr>
+    									<tr><td>7</td><td>1d6-3</td></tr>
+    									<tr><td>8</td><td>1d6-3</td></tr>
+    									<tr><td>9</td><td>1d6-2</td></tr>
+    									<tr><td>10</td><td>1d6-2</td></tr>
+    									<tr><td>11</td><td>1d6-1</td></tr>
+    									<tr><td>12</td><td>1d6-1</td></tr>
+    									<tr><td>13</td><td>1d6</td></tr>
+    								</tbody>
+    							</table>
+    							<table>
+    								<thead><tr><th>Strength</th><th>Thrust</th></tr></thead>
+    								<tbody>
+    									<tr><td>14</td><td>1d6</td></tr>
+    									<tr><td>15</td><td>1d6+1</td></tr>
+    									<tr><td>16</td><td>1d6+1</td></tr>
+    									<tr><td>17</td><td>1d6+2</td></tr>
+    									<tr><td>18</td><td>1d6+2</td></tr>
+    									<tr><td>19</td><td>2d6-1</td></tr>
+    									<tr><td>20</td><td>2d6-1</td></tr>
+    									<tr><td>21</td><td>2d6</td></tr>
+    									<tr><td>22</td><td>2d6</td></tr>
+    									<tr><td>23</td><td>2d6+1</td></tr>
+    									<tr><td>24</td><td>2d6+1</td></tr>
+    									<tr><td>25</td><td>2d6+2</td></tr>
+    									<tr><td>26</td><td>2d6+2</td></tr>
+    								</tbody>
+    							</table>
+    						</span>
+    					</div>
+    					<div class="cell col-damage">
+    						<input type="text" name="attr_thrust" value="1d6-2" />
+    					</div>
+    					<div class="cell col-dice">
+    					    <input type="hidden" name="attr_thrust_damage_dice_icon" class="thrust-damage-dice-icon" value="explode" />
+    						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Damage Roll}} {{characterName=@{character_name}}} {{skillName=Thrust Damage}} {{damageRoll=[[@{thrust}]]}}" name="roll_dmgThrust" class="roll_damage" />
+    					</div>
+    				</div> <!-- .sheet-row -->
+    				
+    				<div class="npc-row margin-bottom row-swing-damage">
+    				    <div class="cell col-name label">
+    						<div class="popup">Swing</div>
+    						<span class="tooltip">
+    							Swing Damage
+    							<br />
+    							<div>See page 16 for the complete table.</div>
+    							<table>
+    								<thead><tr><th>Strength</th><th>Swing</th></tr></thead>
+    								<tbody>
+    									<tr><td>1</td><td>1d6-5</td></tr>
+    									<tr><td>2</td><td>1d6-5</td></tr>
+    									<tr><td>3</td><td>1d6-4</td></tr>
+    									<tr><td>4</td><td>1d6-4</td></tr>
+    									<tr><td>5</td><td>1d6-3</td></tr>
+    									<tr><td>6</td><td>1d6-3</td></tr>
+    									<tr><td>7</td><td>1d6-2</td></tr>
+    									<tr><td>8</td><td>1d6-2</td></tr>
+    									<tr><td>9</td><td>1d6-1</td></tr>
+    									<tr><td>10</td><td>1d6</td></tr>
+    									<tr><td>11</td><td>1d6+1</td></tr>
+    									<tr><td>12</td><td>1d6+2</td></tr>
+    									<tr><td>13</td><td>2d6-1</td></tr>
+    								</tbody>
+    							</table>
+    							<table>
+    								<thead><tr><th>Strength</th><th>Swing</th></tr></thead>
+    								<tbody>
+    									<tr><td>14</td><td>2d6</td></tr>
+    									<tr><td>15</td><td>2d6+1</td></tr>
+    									<tr><td>16</td><td>2d6+2</td></tr>
+    									<tr><td>17</td><td>3d6-1</td></tr>
+    									<tr><td>18</td><td>3d6</td></tr>
+    									<tr><td>19</td><td>3d6+1</td></tr>
+    									<tr><td>20</td><td>3d6+2</td></tr>
+    									<tr><td>21</td><td>4d6-1</td></tr>
+    									<tr><td>22</td><td>4d6</td></tr>
+    									<tr><td>23</td><td>4d6+1</td></tr>
+    									<tr><td>24</td><td>4d6+2</td></tr>
+    									<tr><td>25</td><td>5d6-1</td></tr>
+    									<tr><td>26</td><td>5d6</td></tr>
+    								</tbody>
+    							</table>
+    						</span>
+    					</div>
+    					<div class="cell col-damage">
+    						<input type="text" name="attr_swing" value="1d6" />
+    					</div>
+    					<div class="cell col-dice">
+    						<input type="hidden" name="attr_swing_damage_dice_icon" class="swing-damage-dice-icon" value="explode" />
+    						<button type="roll" value="@{roll}&{template:skillRoll} {{type=Damage Roll}} {{characterName=@{character_name}}} {{skillName=Swing Damage}} {{damageRoll=[[@{swing}]]}}" name="roll_dmgSwing" class="roll_damage" />
+    					</div>
+    				</div> <!-- .sheet-row -->
+    				
+		        </div> <!-- .sheet-table -->
 	        
-	        <div class="column middle">
-	            <h2>Column Two</h2>
-	            <p>Content...</p>
 	        </div>
-	        
-	        <div class="column right">
-	            <h2>Column Three</h2>
-	            <p>Content...</p>
-	        </div>
-	        
-	    </div>
-	    
+	        <!-- END NPC ATTRIBUTE BOX -->
+            
+        </div>
+        
+        <div class="column npc-middle">
+            <h2>Column Two</h2>
+            <p>Content...</p>
+        </div>
+        
+        <div class="column npc-right">
+            <h2>Column Three</h2>
+            <p>Content...</p>
+        </div>
+        
 	</div><!-- end tab-npc -->
 	
     <!-- ===== ===== ===== ===== Revision History TAB ===== ===== ===== ===== -->
