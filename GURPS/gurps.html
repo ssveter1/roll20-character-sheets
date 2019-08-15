@@ -21,11 +21,8 @@
 	        <div class="content">
 	            <h4>GURPS Version <input type="text" name="attr_announcement_version" readonly="readonly" value="0" title="GURPS Sheet Version" /></h4>
 	            <ul>
-					<li>Rolltemplate: If Target is too low, show warning message.</li>
-					<li>General Tab: Fix bug for totalling amounts in summary point table. Reported by Raymond G and Elaxter.</li>
-					<li>General Tab: Fixed movement feats box alignment when Encrumbance table is expanded.</li>
-					<li></li>
-            	</ul>
+					<li>New NPC Tab: Condensed information for managing an NPC.</li>
+				</ul>
 	            <label class="check"><input type="checkbox" name="attr_announcements_hide" value="1">&nbsp;<b><span>Hide until next update</span></b></label>
 	            <button type="action" name="act_view_updates_tab" class="reset" />View All Updates</button>
 	        </div>
@@ -3945,6 +3942,27 @@
 						</div>
 					</div> <!-- .sheet-row -->
 				
+					<div class="npc-row row-max-hitpoints">
+						<div class="cell col-name label">
+							<div class="popup">HP</div>
+							<span class="tooltip">
+								Max Hit Points based on ST
+								<br />
+								2pts/level
+							</span>
+						</div>
+						<div class="cell col-level large-text">
+							<input type="text" name="attr_hit_points_max" value="10" readonly="readonly" >
+						</div>
+						<div class="cell col-mod">
+							<input type="number" name="attr_hit_points_mod" value="0" step="1" />
+						</div>
+						<div class="cell col-pts">
+							<input type="number" name="attr_hit_points_points" value="0" step="2" />
+						</div>
+						<div class="cell col-dice">&nbsp;</div>
+					</div> <!-- .sheet-row -->
+				
 					<div class="npc-row row-dexterity">
 						<div class="cell col-name label large-text">
 							<div class="popup">DX</div>
@@ -4020,7 +4038,28 @@
 						</div>
 					</div> <!-- .sheet-row -->
 				
-    				<div class="npc-row row-perception">
+    				<div class="npc-row row-max-fatigue">
+						<div class="cell col-name label">
+							<div class="popup">FP</div>
+							<span class="tooltip">
+								Max Fatigue Points based on HT
+								<br />
+								3pts/level
+							</span>
+						</div>
+						<div class="cell col-level large-text">
+							<input type="text" name="attr_fatigue_points_max" value="10" readonly="readonly" >
+						</div>
+						<div class="cell col-mod">
+							<input type="number" name="attr_fatigue_points_mod" value="0" step="1" />
+						</div>
+						<div class="cell col-pts">
+							<input type="number" name="attr_fatigue_points_points" value="0" step="3" />
+						</div>
+						<div class="cell col-dice">&nbsp;</div>
+					</div> <!-- .sheet-row -->
+				
+					<div class="npc-row row-perception">
     					<div class="cell col-name label large-text">
     						<div class="popup">Per</div>
     						<span class="tooltip">
@@ -4288,8 +4327,42 @@
         </div>
         
         <div class="column npc-middle">
-            <h2>Column Two</h2>
-            <p>Content...</p>
+            
+            <!-- _____ _____ NPC COMBAT NOTES _____ _____ -->
+	        <div class="box npc-combat-notes">
+		        <div class="table">
+		            
+		            <div class="column-header">
+		                <b>Combat Stats</b>
+		            </div>
+    				
+    				<div class="npc-row npc-combat-stat-fields ">
+    					<div class="cell col-one label">
+    						<div class="popup">Current HP</div>
+    						<span class="tooltip">
+    						    Current HP
+    						</span>
+    					</div>
+    					<div class="cell col-two">
+    						<input type="text" name="attr_hit_points" value="10" />
+    					</div>
+    					<div class="cell col-three">
+    						<div class="popup">Enumbrance</div>
+    						<span class="tooltip">
+    						    Encumbrance level based on weight 
+    						    listed in inventory.
+    						</span>
+    					</div>
+    					<div class="cell col-four">
+    						<input type="number" name="attr_encumbrance_level" value="0" readonly="readonly" />
+    					</div>
+    					<div class="cell col-dice">&nbsp;</div>
+    				</div> <!-- .sheet-row -->
+    				
+    			</div><!-- end npc-combat-notes -->
+    			
+    		</div><!-- end center -->
+            
         </div>
         
         <div class="column npc-right">
@@ -4342,9 +4415,7 @@
 	<p>Pull Request: 8/6/2019</p>
 	
 	<ul>
-	    <li>Rolltemplate: If Target is too low, show warning message. If Defense roll, lowest Target is 1. All other rolls, lowest Target is 3.</li>
-	    <li>General Tab: Fix bug for totalling amounts in summary point table. Reported by Raymond G and Elaxter.</li>
-		<li>General Tab: Fixed movement feats box alignment when Encrumbance table is expanded.</li>
+	    <li>New NPC Tab: Condensed information for managing an NPC.</li>
 	</ul>
 	
 	<h4>Version: 1.6.2</h4>
