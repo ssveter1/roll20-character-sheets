@@ -3892,7 +3892,7 @@
         <div class="column npc-left">
             
             <!-- _____ _____ NPC ATTRIBUTE BOX _____ _____ -->
-	        <div class="box npc-attribute">
+	        <div class="npc-box npc-attribute">
 		        <div class="table">
 		            
 		            <div class="column-header">
@@ -4329,24 +4329,24 @@
         <div class="column npc-middle">
             
             <!-- _____ _____ NPC COMBAT NOTES _____ _____ -->
-	        <div class="box npc-combat-notes">
+	        <div class="npc-box npc-combat-notes">
 		        <div class="table">
 		            
-		            <div class="column-header">
+		            <div class="column-header npc-header-margin">
 		                <b>Combat Stats</b>
 		            </div>
     				
-    				<div class="npc-row npc-combat-stat-fields ">
+    				<div class="npc-row npc-combat-stat-fields">
     					<div class="cell col-one label">
     						<div class="popup">Current HP</div>
     						<span class="tooltip">
-    						    Current HP
+    						    Current Hit Points
     						</span>
     					</div>
     					<div class="cell col-two">
     						<input type="text" name="attr_hit_points" value="10" />
     					</div>
-    					<div class="cell col-three">
+    					<div class="cell col-three label">
     						<div class="popup">Enumbrance</div>
     						<span class="tooltip">
     						    Encumbrance level based on weight 
@@ -4356,18 +4356,105 @@
     					<div class="cell col-four">
     						<input type="number" name="attr_encumbrance_level" value="0" readonly="readonly" />
     					</div>
-    					<div class="cell col-dice">&nbsp;</div>
+    					<div class="cell col-five label">
+    						<div class="popup">Combat Reflexes</div>
+    						<span class="tooltip">
+    						    Check to add +1 Dodge and +2 Fear Check.
+    						</span>
+    					</div>
+    					<div class="cell col-six">
+    						<input type="checkbox" class="sheet-boolean" name="attr_combat_reflexes" value="1">
+    					</div>
     				</div> <!-- .sheet-row -->
     				
-    			</div><!-- end npc-combat-notes -->
+    				<div class="npc-row npc-combat-stat-fields">
+    					<div class="cell col-one label">
+    						<div class="popup">Current FP</div>
+    						<span class="tooltip">
+    						    Current Fatigue Points.
+    						</span>
+    					</div>
+    					<div class="cell col-two">
+    						<input type="text" name="attr_hit_points" value="10" />
+    					</div>
+    					<div class="cell col-three label">
+    						<div class="popup">Move</div>
+    						<span class="tooltip">
+    						    Current move based on encumbrance level.
+    						</span>
+    					</div>
+    					<div class="cell col-four">
+    						<input type="text" name="attr_current_move" value="0" readonly="readonly" />
+    					</div>
+    					<div class="cell col-five label">
+    						<div class="popup">DB</div>
+    						<span class="tooltip">
+    						    Defensive Bonus
+    						</span>
+    					</div>
+    					<div class="cell col-six">
+    						<input type="number" name="attr_npc_defensive_bonus" value="0" />
+    					</div>
+    				</div> <!-- .sheet-row -->
+    				
+    				<div class="npc-row npc-combat-stat-fields">
+    					<div class="cell col-one label">
+    						<div class="popup">SM</div>
+    						<span class="tooltip">
+    						    Size Modifier
+    						</span>
+    					</div>
+    					<div class="cell col-two">
+    						<input type="text" name="attr_size" value="0" />
+    					</div>
+    					<div class="cell col-three label">
+    						<div class="popup">Dodge</div>
+    						<span class="tooltip">
+    						    Current Dodge including enumbrance penalty.
+    						</span>
+    					</div>
+    					<div class="cell col-four">
+    						<input type="text" name="attr_current_dodge" value="0" readonly="readonly">
+    					</div>
+    					<div class="cell col-five label">
+    						&nbsp;
+    					</div>
+    					<div class="cell col-six">
+    						&nbsp;
+    					</div>
+    				</div> <!-- .sheet-row -->
+    				
+    			</div><!-- end table -->
     			
-    		</div><!-- end center -->
+    		</div><!-- end npc-combat-notes -->
+            
+        
+			<div class="npc-box npc-active-defenses">
+			    
+			    <div class="table">
+			        
+			        Table Here
+			        
+			    </div>
+			    
+			</div><!-- npc active defenses -->
+			
             
         </div>
         
         <div class="column npc-right">
-            <h2>Column Three</h2>
-            <p>Content...</p>
+            
+            <!-- _____ _____ NPC HIT LOCATIONS _____ _____ -->
+	        <div class="npc-box npc-hit-locations">
+		        <div class="table">
+		            
+		            <div class="column-header">
+		                <b>Hit Location</b>
+		            </div>
+    				
+    			</div>
+    		</div>
+    		
         </div>
         
 	</div><!-- end tab-npc -->
