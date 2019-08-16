@@ -2180,26 +2180,54 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 100%;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-col-one {
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-one {
     width: 100px;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-col-two {
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-two {
     width: 35px;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-col-three {
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-three {
     width: 100px;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-col-four {
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-four {
     width: 35px;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-col-five {
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-five {
     width: 100px;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-col-six {
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-six {
+    width: 35px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses {
+    margin-top: 10px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses .sheet-col-one {
+    width: calc(100% - 175px);
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses .sheet-col-one input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses .sheet-col-two {
+    width: 65px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses .sheet-col-three {
+    width: 40px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses .sheet-col-four {
+    width: 35px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses .sheet-col-five {
     width: 35px;
 }
