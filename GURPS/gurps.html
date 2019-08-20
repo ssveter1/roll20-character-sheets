@@ -4459,7 +4459,7 @@
     				</div> <!-- .sheet-header -->
 				
 				    <!-- repeating defense row -->
-				    <fieldset class="repeating_defense">
+				    <fieldset class="repeating_npcDefenses">
     					<div class="row row-stats">
     						<div class="cell col-one">
     							<input type="text" name="attr_npc_defense_name" />
@@ -4566,7 +4566,7 @@
     				</div> <!-- .sheet-header -->
 				
 				    <!-- repeating npc melee attack row -->
-				    <fieldset class="repeating_npc_melee_attack">
+				    <fieldset class="repeating_npcMeleeAttacks">
     				    <input class="toggle-highlight" type="checkbox" name="attr_npc_melee_highlight" />
     					<input class="toggle toggle-notes" type="checkbox" name="npc_melee_toggle_notes" />
     					<span class="checkbox"></span>
@@ -4627,7 +4627,7 @@
     							<input type="text" name="attr_npc_melee_damage_notes" />
     						</div>
     					</div> <!-- .sheet-row -->
-    				</fieldset> <!-- .repeating_npc_melee_attack -->
+    				</fieldset> <!-- .repeating_npcMeleeAttacks -->
     				
 				
 			    </div><!-- .table -->
@@ -6810,7 +6810,7 @@ Skull Damage x4
         
         updateRepeatingDamageDice("repeating_melee");
         
-        updateRepeatingDamageDice("repeating_npc_melee_attack");
+        updateRepeatingDamageDice("repeating_npcMeleeAttacks");
         
         updateRepeatingDamageDice("repeating_ranged");
         
