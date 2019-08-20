@@ -2855,7 +2855,8 @@
 					<div class="sheet-cell sheet-col1">
 						<div class="sheet-popup">Damage</div>
 						<span class="sheet-tooltip">
-							<strong>Armor Divisor</strong>: A number in parenthesis after<br />
+						    Place damage modifier information into the Damage notes.<br />
+    						<strong>Armor Divisor</strong>: A number in parenthesis after<br />
 							the damage - eg. (2) - is an armor divisor.
 							<br />
 							Enter this number as AD(#)  or as
@@ -2991,7 +2992,8 @@
 					<div class="sheet-cell sheet-col1">
 						<div class="sheet-popup">Damage</div>
 						<span class="sheet-tooltip">
-							<strong>Armor Divisor</strong>: A number in parenthesis after<br />
+							Place damage modifier information into the Damage notes.<br />
+    						<strong>Armor Divisor</strong>: A number in parenthesis after<br />
 							the damage - eg. (2) - is an armor divisor.<br />
 							Enter this number as AD(#)  or as<br />
                                                         Armor Divisor(#) in the Damage Notes.
@@ -4488,6 +4490,149 @@
 			    </div><!-- .table -->
 			    
 			</div><!-- npc active defenses -->
+			
+			<div class="npc-box npc-melee-combat">
+			    
+			    <div class="table">
+			        
+			        <!-- .header row -->
+			        <div class="header">
+					
+					    <div class="cell col-one">Melee Attack</div>
+					
+					    <div class="cell col-two">
+					        <div class="sheet-popup">Dam</div>
+    						<span class="sheet-tooltip">
+    						    Place damage modifier information into the Damage notes.<br />
+    							<strong>Armor Divisor</strong>: A number in parenthesis after<br />
+    							the damage - eg. (2) - is an armor divisor.
+    							<br />
+    							Enter this number as AD(#)  or as
+    							<br />
+                                Armor Divisor(#) in the Damage Notes.
+    							<br />
+    							<strong>ex</strong>: indicates the attack causes an explosion.<br />
+    							See page 269. Enter in the Damage Notes
+    						</span>    
+					    </div>
+					
+    					<div class="cell col-three">&nbsp;</div>
+					
+    					<div class="cell col-four">
+    						<div class="popup">Type</div>
+						    <span class="tooltip">
+						        <table>
+    								<thead>
+    									<tr>
+    										<th>Abbr</th>
+    										<th>Name</th>
+    									</tr>
+    								</thead>
+    								<tbody>
+    									<tr><td>aff</td> <td>Affliction</td></tr>
+    									<tr><td>burn</td><td>Burning</td></tr>
+    									<tr><td>cor</td> <td>Corrosion</td></tr>
+    									<tr><td>cr</td>  <td>Crushing</td></tr>
+    									<tr><td>cut</td> <td>Cutting</td></tr>
+    									<tr><td>fat</td> <td>Fatigue</td></tr>
+    									<tr><td>imp</td> <td>Impaling</td></tr>
+    									<tr><td>pi-</td> <td>Small Piercing</td></tr>
+    									<tr><td>pi</td>  <td>Piercing</td></tr>
+    									<tr><td>pi+</td> <td>Large Piercing</td></tr>
+    									<tr><td>pi++</td><td>Huge Piercing</td></tr>
+    									<tr><td>spec</td><td>Special</td></tr>
+    									<tr><td>tox</td> <td>Toxic</td></tr>
+    								</tbody> 
+							    </table>
+						    </span>
+    					</div>
+    				
+    					<div class="cell col-five">
+    					    <div class="sheet-popup">REACH</div>
+    						<span class="sheet-tooltip">
+    							Weapon reach. The distance in yards that the weapon can reach.
+    							<br />
+    							<strong>C</strong>: this weapon can be used in close combat.
+    							<br />
+    							<strong>*</strong>: the weapon is awkward, and requires a Ready<br />
+    							maneuver to switch between different reaches.
+    						</span>    
+    					</div>
+    					
+    					<div class="cell col-six-seven">
+    					    <span style="background-color: #87CEFA">| skill |</span>
+    					</div>
+    					
+    				</div> <!-- .sheet-header -->
+				
+				    <!-- repeating npc melee attack row -->
+				    <fieldset class="repeating_npc_melee_attack">
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_melee_highlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npc_melee_toggle_notes" />
+    					<span class="checkbox"></span>
+    					<div class="row row-stats">
+    						<div class="cell column-one">
+    							<input type="text" name="attr_npc_melee_name" />
+    						</div>
+    						<div class="cell column-two">
+    							<input type="text" name="attr_npc_melee_damage" />
+    						</div>
+    						<div class="cell column-three">
+    						    <input type="hidden" name="attr_npc_damage_dice_icon" class="melee-damage-dice-icon" value="explode" />
+    						    <button type="roll" value="@{roll}&{template:skillRoll} {{type=Melee Damage}} {{characterName=@{character_name}}} {{skillName=@{npc_melee_name}}} {{damageRoll=[[@{npc_melee_damage}]]}} {{damageType=@{npc_melee_type}}} {{useDamageTypeNotes=[[@{use_damage_type_notes}]]}} {{damageTypeNote=@{npc_damage_type_note}}} {{showNotes=[[1]]}} {{notes=@{npc_melee_damage_notes}}}" name="npc_melee_roll_damage" class="roll_damage" />
+    						</div>
+    						<div class="cell column-four">
+    							<select name="attr_npc_melee_type">
+    								<option value="Affliction (aff)">aff</option>
+    								<option value="Burning (burn)">burn</option>
+    								<option value="Corrosion (cor)">cor</option>
+    								<option value="Crushing (cr)">cr</option>
+    								<option value="Cutting (cut)">cut</option>
+    								<option value="Fatigue (fat)">fat</option>
+    								<option value="Impaling (imp)">imp</option>
+    								<option value="Small Piercing (pi-)">pi-</option>
+    								<option value="Piercing (pi)">pi</option>
+    								<option value="Large Piercing (pi+)">pi+</option>
+    								<option value="Huge Piercing (pi++)">pi++</option>
+    								<option value="Special (spec)">spec</option>
+    								<option value="Toxic (tox)">tox</option>
+    							</select>
+    							<input type="hidden" name="attr_npc_damage_type_note" value="@{damage_type_note_cut}" />
+    						</div>
+    						<div class="cell column-five">
+    							<input type="text" name="attr_npc_melee_reach" />
+    						</div>
+    						<div class="cell column-six">
+    							<input type="text" name="attr_npc_melee_skill" />
+    						</div>
+    						<div class="cell column-seven">
+    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Melee Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_melee_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_melee_skill} + @{modifier}]]}} {{reach=@{npc_melee_reach}}} {{notes=@{npc_melee_notes}}} {{showNotes=[[1]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
+    						</div>
+    					</div> <!-- .sheet-row -->
+    					<div class="row row-details2">
+    						<div class="cell col0 label">
+    						    Weapon Notes
+    						</div>
+    						<div class="cell col1">
+    							<input type="text" name="attr_npc_melee_notes" />
+    						</div>
+    						<div class="cell col2 label">
+    							<div class="popup">Damage Notes</div>
+    							<span class="tooltip">
+    							    <strong>Hint:</strong> Enter inline rolls for additional results.<br />
+    							    Example: [[1d6]] fire damage.
+    						    </span>
+    						</div>
+    						<div class="cell col3">
+    							<input type="text" name="attr_npc_melee_damage_notes" />
+    						</div>
+    					</div> <!-- .sheet-row -->
+    				</fieldset> <!-- .repeating_npc_melee_attack -->
+    				
+				
+			    </div><!-- .table -->
+			    
+			</div><!-- npc melee combat -->
 			
             
         </div>
@@ -6664,6 +6809,8 @@ Skull Damage x4
         updateThrustSwingDamageIcons();
         
         updateRepeatingDamageDice("repeating_melee");
+        
+        updateRepeatingDamageDice("repeating_npc_melee_attack");
         
         updateRepeatingDamageDice("repeating_ranged");
         

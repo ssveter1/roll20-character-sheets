@@ -2068,6 +2068,14 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     float: left;
 }
 
+.sheet-tab-npc-container .sheet-column .sheet-table button.btn {
+    margin: 0;
+    height: 12px;
+    border-radius: 0;
+    line-height: 10px;
+    background-image: none;
+    border: none;
+}
 .sheet-tab-npc-container .sheet-column.sheet-npc-left {
     width: 190px;
 }
@@ -2115,6 +2123,73 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 .sheet-tab-npc-container .sheet-cell input[readonly="readonly"] {
     background-color: #c9c9c9;
+}
+
+/* repeating fields, show/hide/highlight buttons */
+.sheet-tab-npc-container .repcontainer .repitem input.sheet-toggle-highlight[type="checkbox"] {
+    width: 16px;
+    height: 22px;
+    opacity: 1;
+    position: absolute;
+    margin-left: 5px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem input.sheet-toggle-notes[type="checkbox"] {
+    opacity: 0;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    left: 22px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col0,
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col2 {
+    width: 86px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col1,
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col3 {
+    width: calc(100% - 86px);
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col1 input,
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col3 input {
+    text-align: left;
+}
+
+.charsheet .sheet-npc-box .sheet-toggle.sheet-toggle-notes ~ .sheet-checkbox {
+    left: 22px;
+}
+
+.charsheet .sheet-npc-box .sheet-toggle ~ .sheet-checkbox {
+    position: absolute;
+}
+
+.charsheet .sheet-npc-box input[type="checkbox"] ~ .sheet-checkbox:before {
+    width: 18px;
+    height: 18px;
+    line-height: 22px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    font-family: "Pictos";
+}
+
+.charsheet .sheet-npc-box .sheet-toggle ~ .sheet-checkbox:before {
+    content: "4";
+}
+
+.charsheet .sheet-npc-box .sheet-toggle:checked ~ .sheet-checkbox:before {
+    transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
 }
 
 /* hide input number spinners */
@@ -2176,6 +2251,8 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 
 /* --- column two content --- */
+
+/* Combat Stats */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes {
     width: 100%;
 }
@@ -2204,6 +2281,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 35px;
 }
 
+/* active defenses */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses {
     margin-top: 10px;
 }
@@ -2230,4 +2308,87 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses .sheet-col-five {
     width: 35px;
+}
+
+/* npc melee attack */
+
+/* adjust height of additional melee information */
+.charsheet  .sheet-npc-box .sheet-toggle:checked ~ .sheet-row-details2 {
+    height: 44px
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat {
+    margin-top: 10px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-one {
+    width: calc(100% - 247px);
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-two {
+    width: 47px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-three {
+    width: 37px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-four {
+    width: 61px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-five {
+    width: 40px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-six {
+    width: 35px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-seven {
+    width: 35px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-col-six-seven {
+    width: 60px;
+}
+
+/* repeating items */
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-one {
+    margin-left: 41px;
+    width: calc(100% - 290px);
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-one input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-two {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-three {
+    width: 30px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-four {
+    width: 55px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-five {
+    width: 46px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-six {
+    width: 30px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-seven {
+    width: 22px;
+}
+
+/* if repeating item row checked, add background color */
+.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-stats,
+.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-details2 {
+    background: #B7FFAA;    
 }
