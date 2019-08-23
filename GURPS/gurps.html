@@ -4497,7 +4497,7 @@
 			        <!-- .header row -->
 			        <div class="header">
 					
-					    <div class="cell col-one">Melee Attack</div>
+					    <div class="cell col-one">Melee Attacks</div>
 					
 					    <div class="cell col-two">
 					        <div class="sheet-popup">Dam</div>
@@ -4633,7 +4633,187 @@
 			    
 			</div><!-- npc melee combat -->
 			
-            
+            <div class="npc-box npc-ranged-combat">
+			    
+			    <div class="table">
+			        
+			        <!-- .header row -->
+			        <div class="header">
+					
+					    <div class="cell col-one">Ranged Attacks</div>
+					
+					    <div class="cell col-two">
+					        <div class="sheet-popup">Dam</div>
+    						<span class="sheet-tooltip">
+    						    Place damage modifier information into the Damage notes.<br />
+    							<strong>Armor Divisor</strong>: A number in parenthesis after<br />
+    							the damage - eg. (2) - is an armor divisor.
+    							<br />
+    							Enter this number as AD(#)  or as
+    							<br />
+                                Armor Divisor(#) in the Damage Notes.
+    							<br />
+    							<strong>ex</strong>: indicates the attack causes an explosion.<br />
+    							See page 269. Enter in the Damage Notes
+    						</span>    
+					    </div>
+					
+    					<div class="cell col-three">&nbsp;</div>
+					
+    					<div class="cell col-four">
+    						<div class="popup">Type</div>
+						    <span class="tooltip">
+						        <table>
+    								<thead>
+    									<tr>
+    										<th>Abbr</th>
+    										<th>Name</th>
+    									</tr>
+    								</thead>
+    								<tbody>
+    									<tr><td>aff</td> <td>Affliction</td></tr>
+    									<tr><td>burn</td><td>Burning</td></tr>
+    									<tr><td>cor</td> <td>Corrosion</td></tr>
+    									<tr><td>cr</td>  <td>Crushing</td></tr>
+    									<tr><td>cut</td> <td>Cutting</td></tr>
+    									<tr><td>fat</td> <td>Fatigue</td></tr>
+    									<tr><td>imp</td> <td>Impaling</td></tr>
+    									<tr><td>pi-</td> <td>Small Piercing</td></tr>
+    									<tr><td>pi</td>  <td>Piercing</td></tr>
+    									<tr><td>pi+</td> <td>Large Piercing</td></tr>
+    									<tr><td>pi++</td><td>Huge Piercing</td></tr>
+    									<tr><td>spec</td><td>Special</td></tr>
+    									<tr><td>tox</td> <td>Toxic</td></tr>
+    								</tbody> 
+							    </table>
+						    </span>
+    					</div>
+    				
+    					<div class="cell col-five">
+    					    <div class="sheet-popup">ACC</div>
+    						<span class="sheet-tooltip">
+    							Accuracy bonus after aiming one round.<br />
+    							Those with Gunslinger advantage gets <br />
+    							bonus without the need to aim. Ref. B58
+    						</span>    
+    					</div>
+    					
+    					<div class="cell col-six-seven">
+    					    <span style="background-color: #87CEFA">| skill |</span>
+    					</div>
+    					
+    				</div> <!-- .sheet-header -->
+				
+				    <!-- repeating npc ranged attack row -->
+				    <fieldset class="repeating_npcRangedAttacks">
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_ranged_highlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npc_ranged_toggle_notes" />
+    					<span class="checkbox"></span>
+    					<div class="row row-stats">
+    						<div class="cell column-one">
+    							<input type="text" name="attr_npc_ranged_name" />
+    						</div>
+    						<div class="cell column-two">
+    							<input type="text" name="attr_npc_ranged_damage" />
+    						</div>
+    						<div class="cell column-three">
+    						    <input type="hidden" name="attr_npc_ranged_damage_dice_icon" class="melee-damage-dice-icon" value="explode" />
+    						    <button type="roll" value="@{roll}&{template:skillRoll} {{type=Ranged Damage}} {{characterName=@{character_name}}} {{skillName=@{npc_ranged_name}}} {{damageRoll=[[@{npc_ranged_damage}]]}} {{damageType=@{npc_ranged_type}}} {{useDamageTypeNotes=[[@{use_damage_type_notes}]]}} {{damageTypeNote=@{npc_ranged_damage_type_note}}} {{showNotes=[[1]]}} {{notes=@{npc_ranged_damage_notes}}}" name="npc_ranged_roll_damage" class="roll_damage" />
+    						</div>
+    						<div class="cell column-four">
+    							<select name="attr_npc_ranged_type">
+    								<option value="Affliction (aff)">aff</option>
+    								<option value="Burning (burn)">burn</option>
+    								<option value="Corrosion (cor)">cor</option>
+    								<option value="Crushing (cr)">cr</option>
+    								<option value="Cutting (cut)">cut</option>
+    								<option value="Fatigue (fat)">fat</option>
+    								<option value="Impaling (imp)">imp</option>
+    								<option value="Small Piercing (pi-)">pi-</option>
+    								<option value="Piercing (pi)">pi</option>
+    								<option value="Large Piercing (pi+)">pi+</option>
+    								<option value="Huge Piercing (pi++)">pi++</option>
+    								<option value="Special (spec)">spec</option>
+    								<option value="Toxic (tox)">tox</option>
+    							</select>
+    							<input type="hidden" name="attr_npc_ranged_damage_type_note" value="@{damage_type_note_cut}" />
+    						</div>
+    						<div class="cell column-five">
+    							<input type="text" name="attr_npc_ranged_acc" />
+    						</div>
+    						<div class="cell column-six">
+    							<input type="text" name="attr_npc_ranged_skill" />
+    						</div>
+    						<div class="cell column-seven">
+    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Ranged Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_ranged_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_ranged_skill} + @{modifier}]]}} {{notes=@{npc_ranged_notes}}} {{showNotes=[[1]]}} {{rof=@{npc_ranged_rof}}} {{recoil=@{npc_ranged_recoil}}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
+    						</div>
+    					</div> <!-- .sheet-row -->
+    					<div class="row row-details2">
+    					    <input type="hidden" name="attr_npc_ranged_recoil" value="-2" />
+    					    <div class="container-stats">
+        					    <div class="cell col-range label">
+        					        Range
+        					    </div>
+        						<div class="cell col-rof label">
+        					        RoF
+        					    </div>
+        						<div class="cell col-shots label">
+        					        Shots
+        					    </div>
+        						<div class="cell col-bulk label">
+        					        Bulk
+        					    </div>
+        					    <div class="cell col-recoil label">
+        					        Recoil
+        					    </div>
+        					    <div class="cell col-malfunction label">
+        					        Malf
+        					    </div>
+    					    </div>
+    					    <div class="container-stats margin-to-notes">
+        					    <div class="cell col-range label">
+        					        <input type="text" name="attr_npc_ranged_range" />
+        					    </div>
+        						<div class="cell col-rof label">
+        					        <input type="text" name="attr_npc_ranged_rof" />
+        					    </div>
+        						<div class="cell col-shots label">
+        					        <input type="text" name="attr_npc_ranged_shots" />
+        					    </div>
+        						<div class="cell col-bulk label">
+        					        <input type="text" name="attr_npc_ranged_bulk" />
+        					    </div>
+        					    <div class="cell col-recoil label">
+        					        <input type="text" name="attr_npc_ranged_recoil" />
+        					    </div>
+        					    <div class="cell col-malfunction label">
+        					        <input type="text" name="attr_npc_ranged_malfunction" />
+        					    </div>
+    					    </div>
+    						<div class="cell col0 label">
+    						    Weapon Notes
+    						</div>
+    						<div class="cell col1">
+    							<input type="text" name="attr_npc_ranged_notes" />
+    						</div>
+    						<div class="cell col2 label">
+    							<div class="popup">Damage Notes</div>
+    							<span class="tooltip">
+    							    <strong>Hint:</strong> Enter inline rolls for additional results.<br />
+    							    Example: [[1d6]] fire damage.
+    						    </span>
+    						</div>
+    						<div class="cell col3">
+    							<input type="text" name="attr_npc_ranged_damage_notes" />
+    						</div>
+    					</div> <!-- .sheet-row -->
+    				</fieldset> <!-- .repeating_npcMeleeAttacks -->
+    				
+				
+			    </div><!-- .table -->
+			    
+			</div><!-- npc melee combat -->
+			
         </div>
         
         <div class="column npc-right">

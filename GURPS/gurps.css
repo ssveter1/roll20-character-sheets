@@ -2401,3 +2401,127 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 .sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-details2 {
     background: #B7FFAA;    
 }
+
+/* npc ranged attack */
+
+/* adjust height of additional ranged information */
+.charsheet  .sheet-npc-box.sheet-npc-ranged-combat .sheet-toggle:checked ~ .sheet-row-details2 {
+    height: 90px
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat {
+    margin-top: 10px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-one {
+    width: calc(100% - 247px);
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-two {
+    width: 47px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-three {
+    width: 37px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-four {
+    width: 61px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-five {
+    width: 40px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-six {
+    width: 35px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-seven {
+    width: 35px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-col-six-seven {
+    width: 60px;
+}
+
+/* repeating items */
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-one {
+    margin-left: 41px;
+    width: calc(100% - 290px);
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-one input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-two {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-three {
+    width: 30px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-four {
+    width: 55px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-five {
+    width: 46px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-six {
+    width: 30px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-seven {
+    width: 22px;
+}
+
+/* if repeating item row checked, add background color */
+.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-stats,
+.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-details2 {
+    background: #B7FFAA;    
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-container-stats {
+    width: 100%;
+    height: 22px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-margin-to-notes {
+    margin-bottom: 5px;
+}
+
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repitem .sheet-cell {
+    text-align: center;
+}
+
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repitem .sheet-cell input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-range {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-rof {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-shots {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-bulk {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-recoil {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-malfunction {
+    width: 60px;
+}
