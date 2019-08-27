@@ -493,7 +493,8 @@ input.sheet-tab0 + span {
     background: none;
 }
 
-.sheet-box button.sheet-roll-tracker:before {
+.sheet-box button.sheet-roll-tracker:before,
+.sheet-npc-box button.sheet-roll-tracker:before {
     font-family: "Pictos" !important;
     content: "t" !important;
 }
@@ -2290,6 +2291,14 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 35px;
 }
 
+/* style for selecting row */
+
+/* if repeating item row checked, add background color */
+.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-stats,
+.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-details2 {
+    background: #B7FFAA;    
+}
+
 /* active defenses */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses {
     margin-top: 10px;
@@ -2396,12 +2405,6 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 22px;
 }
 
-/* if repeating item row checked, add background color */
-.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-stats,
-.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-details2 {
-    background: #B7FFAA;    
-}
-
 /* npc ranged attack */
 
 /* adjust height of additional ranged information */
@@ -2451,7 +2454,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: calc(100% - 290px);
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-one input {
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-one .sheet-column-one input {
     text-align: left;
 }
 
@@ -2479,12 +2482,6 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 22px;
 }
 
-/* if repeating item row checked, add background color */
-.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-stats,
-.sheet-tab-npc-container input.sheet-toggle-highlight[type="checkbox"]:checked ~ .sheet-row-details2 {
-    background: #B7FFAA;    
-}
-
 .sheet-tab-npc-container .repcontainer .repitem .sheet-container-stats {
     width: 100%;
     height: 22px;
@@ -2498,30 +2495,90 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     text-align: center;
 }
 
-.sheet-tab-npc-container .sheet-npc-ranged-combat .repitem .sheet-cell input {
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repitem .sheet-cell.sheet-column-one input {
     text-align: left;
 }
 
-.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-range {
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-range {
     width: 60px;
 }
 
-.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-rof {
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-rof {
     width: 60px;
 }
 
-.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-shots {
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-shots {
     width: 60px;
 }
 
-.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-bulk {
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-bulk {
     width: 60px;
 }
 
-.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-recoil {
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-recoil {
     width: 60px;
 }
 
-.sheet-tab-npc-container .repcontainer .repitem .sheet-cell.sheet-col-malfunction {
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-malfunction {
     width: 60px;
 }
+
+/* Traits Repeating Section */
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits {
+    margin-top: 10px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-one {
+    width: calc(100% - 141px);
+    text-align: left;
+    margin-left: 41px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-one input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-two {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-three {
+    width: 40px;
+}
+
+/* repeating items */
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-row-stats .sheet-column-one {
+    margin-left: 41px;
+    width: calc(100% - 142px);
+}
+
+.charsheet .sheet-npc-box.sheet-npc-traits .sheet-toggle:checked ~ .sheet-row-details2 {
+    height: 104px
+}
+
+.charsheet .sheet-npc-box.sheet-npc-traits .sheet-cell.sheet-col-notebox {
+    height: 104px;
+    width: 100%;
+}
+
+.charsheet .sheet-npc-box.sheet-npc-traits .sheet-cell.sheet-col-notebox textarea {
+    height: 67px;
+    width: 97%;
+}
+
+.sheet-tab-npc-container .sheet-npc-traits .repitem .sheet-row-details2 .sheet-show-notes input[type=checkbox] {
+    width: 15px ! important;
+}
+
+.sheet-tab-npc-container .sheet-npc-traits .repitem .sheet-cell.sheet-column-one input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .sheet-npc-traits .repcontainer .repitem .sheet-cell.sheet-column-two {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .sheet-npc-traits .repcontainer .repitem .sheet-cell.sheet-column-three {
+    width: 40px;
+}
+

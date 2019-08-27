@@ -2854,16 +2854,14 @@
 					<div class="sheet-cell sheet-col1">
 						<div class="sheet-popup">Damage</div>
 						<span class="sheet-tooltip">
-						    Place damage modifier information into the Damage notes.<br />
+						    <b>Note:</b>Place damage modifier information into the<br />
+						    Damage notes.<br />
     						<strong>Armor Divisor</strong>: A number in parenthesis after<br />
-							the damage - eg. (2) - is an armor divisor.
-							<br />
-							Enter this number as AD(#)  or as
-							<br />
-                            Armor Divisor(#) in the Damage Notes.
-							<br />
+							the damage - eg. (2) - is an armor divisor.<br />
+							Enter this number as AD(#)  or as<br />
+                            Armor Divisor(#) in the Damage Notes.<br />
 							<strong>ex</strong>: indicates the attack causes an explosion.<br />
-							See page 269. Enter in the Damage Notes
+							See page 269.
 						</span>
 					</div>
 					<div class="sheet-cell sheet-col2">
@@ -2991,7 +2989,8 @@
 					<div class="sheet-cell sheet-col1">
 						<div class="sheet-popup">Damage</div>
 						<span class="sheet-tooltip">
-							Place damage modifier information into the Damage notes.<br />
+							Place damage modifier information into the<br />
+							Damage notes.<br />
     						<strong>Armor Divisor</strong>: A number in parenthesis after<br />
 							the damage - eg. (2) - is an armor divisor.<br />
 							Enter this number as AD(#)  or as<br />
@@ -4334,7 +4333,7 @@
 		        <div class="table">
 		            
 		            <div class="column-header npc-header-margin">
-		                <b>Combat Stats</b>
+		                <b>Combat</b>
 		            </div>
     				
     				<div class="npc-row npc-combat-stat-fields">
@@ -4428,8 +4427,7 @@
     			</div><!-- end table -->
     			
     		</div><!-- end npc-combat-notes -->
-            
-        
+           
 			<div class="npc-box npc-active-defenses">
 			    
 			    <div class="table">
@@ -4502,16 +4500,14 @@
 					    <div class="cell col-two">
 					        <div class="sheet-popup">Dam</div>
     						<span class="sheet-tooltip">
-    						    Place damage modifier information into the Damage notes.<br />
+    						    <b>Note:</b> Place damage modifier information into<br />
+    						    the Damage notes.<br />
     							<strong>Armor Divisor</strong>: A number in parenthesis after<br />
-    							the damage - eg. (2) - is an armor divisor.
-    							<br />
-    							Enter this number as AD(#)  or as
-    							<br />
-                                Armor Divisor(#) in the Damage Notes.
-    							<br />
+    							the damage - eg. (2) - is an armor divisor.<br />
+    							Enter this number as AD(#)  or as<br />
+                                Armor Divisor(#) in the Damage Notes.<br />
     							<strong>ex</strong>: indicates the attack causes an explosion.<br />
-    							See page 269. Enter in the Damage Notes
+    							See page 269.
     						</span>    
 					    </div>
 					
@@ -4645,16 +4641,13 @@
 					    <div class="cell col-two">
 					        <div class="sheet-popup">Dam</div>
     						<span class="sheet-tooltip">
-    						    Place damage modifier information into the Damage notes.<br />
+    						    <b>Note:</b> Place damage modifier information into the<br />
+    						    Damage notes.<br />
     							<strong>Armor Divisor</strong>: A number in parenthesis after<br />
-    							the damage - eg. (2) - is an armor divisor.
-    							<br />
-    							Enter this number as AD(#)  or as
-    							<br />
-                                Armor Divisor(#) in the Damage Notes.
-    							<br />
-    							<strong>ex</strong>: indicates the attack causes an explosion.<br />
-    							See page 269. Enter in the Damage Notes
+    							the damage - eg. (2) - is an armor divisor.<br />
+    							Enter this number as AD(#)  or as<br />
+                                <strong>ex</strong>: indicates the attack causes an explosion.<br />
+    							See page 269.
     						</span>    
 					    </div>
 					
@@ -4692,9 +4685,12 @@
     					<div class="cell col-five">
     					    <div class="sheet-popup">ACC</div>
     						<span class="sheet-tooltip">
-    							Accuracy bonus after aiming one round.<br />
+    							Accuracy bonus after aiming one round. Ref. B169.<br />
+    							If the weapon has a builtin scope, the bonus for this<br />
+    							appears as a separate modifier after the weapon’s <br />
+    							base Acc; e.g., "7+2."<br />
     							Those with Gunslinger advantage gets <br />
-    							bonus without the need to aim. Ref. B58
+    							bonus without the need to aim. Ref. B58.
     						</span>    
     					</div>
     					
@@ -4749,25 +4745,67 @@
     						</div>
     					</div> <!-- .sheet-row -->
     					<div class="row row-details2">
-    					    <input type="hidden" name="attr_npc_ranged_recoil" value="-2" />
     					    <div class="container-stats">
         					    <div class="cell col-range label">
-        					        Range
+        					        <div class="sheet-popup">Range</div>
+            						<span class="sheet-tooltip">
+            						    Measured in yards. Ref. B269<br />
+            							If one number, this is maximum range.<br />
+            							If two numbers, if over first number, damage is halved or HT+3. Second number is max. range.<br />
+            						</span>
         					    </div>
         						<div class="cell col-rof label">
-        					        RoF
+        					        <div class="sheet-popup">RoF</div>
+            						<span class="sheet-tooltip">
+            							Rate of Fire. Ref. B270<br />
+            							The maximum number of shots that can be fired in <br />
+            							one turn (by a regular person).<br />
+            							The minimum number of shots is 1.<br />
+            							<strong>!</strong>: minimum RoF is 1/4 of the maximum, rounded up.<br />
+            							<strong>mxn</strong>: fires the first number of shots, which each then<br />
+            							split into the second number (eg. shotguns)<br />
+            							<strong>Jet</strong>: shoots a continuous stream of fliud. See page 106.
+            						</span>
         					    </div>
         						<div class="cell col-shots label">
-        					        Shots
+        					        <div class="sheet-popup">Shots</div>
+            						<span class="sheet-tooltip">
+            						    The number of shots that can be fired before the<br />
+            							weapon must be reloaded.<br />
+            							The parenthetical number indicates the number of 1<br />
+            							second ready maneuvers required to reload the<br />
+            							weapon.<br />
+            							<strong>T</strong>: the weapon is thrown. To "reload" it, pick it up.<br />
+            							<strong>i</strong>: you must load the shots individually. the listed<br />
+            							time is for each shot. Ref. B270
+            						</span>
         					    </div>
         						<div class="cell col-bulk label">
-        					        Bulk
-        					    </div>
+        					        <div class="sheet-popup">Bulk</div>
+            						<span class="sheet-tooltip">
+            							Penalty to Move and Attack and to<br />
+            							Holdout skill. Ref. B270
+            						</span>   
+                				</div>
         					    <div class="cell col-recoil label">
-        					        Recoil
+        					        <div class="sheet-popup">Recoil</div>
+            						<span class="sheet-tooltip">
+            						    <i>Firearms only.</i><br />
+            						    When firing at RoF 2+, every full multiple of Rcl<br />
+            							by which you make your attack roll means you score<br />
+            							one extra hit, to a maximum number of hits equal<br />
+            							to total shots fired. Ref. B271
+            						</span>
         					    </div>
         					    <div class="cell col-malfunction label">
-        					        Malf
+        					        <div class="sheet-popup">Malf</div>
+            						<span class="sheet-tooltip">
+            						    Malfunction. A weapon will jam, misfire, or otherwise<br />
+            						    fail to function on any attack roll equal to  or <br />
+            						    greater than its Malf.; see Malfunctions (p. 407).<br /><br />
+                                        Malfunction number is a function of tech level:<br />
+                                        it is 12 at TL3, 14 at TL4, 16 at TL5, and 17 at TL6+.
+            						</span>
         					    </div>
     					    </div>
     					    <div class="container-stats margin-to-notes">
@@ -4814,6 +4852,60 @@
 			    
 			</div><!-- npc melee combat -->
 			
+			<!-- _____ _____ NPC TRAITS _____ _____ -->
+	        <div class="npc-box npc-traits">
+		        <div class="table">
+		            
+		            <div class="column-header npc-header-margin">
+		                <b>Traits</b>
+		            </div>
+    				
+    				    <!-- .header row -->
+			        <div class="header">
+					
+					    <div class="cell col-one">Trait</div>
+					
+					    <div class="cell col-two">
+					        <div class="sheet-popup">Target</div>
+    						<span class="sheet-tooltip">
+    						    Target for trait, such as Frequency of Appearance<br />
+    						    or Self-Control Roll.<br />
+    						</span>    
+					    </div>
+					
+    				</div> <!-- .sheet-header -->
+				
+				    <!-- repeating npc traits row -->
+				    <fieldset class="repeating_npcTraits">
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_trait_highlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npc_trait_toggle_notes" />
+    					<span class="checkbox"></span>
+    					<div class="row row-stats">
+    						<div class="cell column-one">
+    							<input type="text" name="attr_npc_trait_name" />
+    						</div>
+    						<div class="cell column-two">
+    							<input type="text" name="attr_npc_trait_target" />
+    						</div>
+    						<div class="cell column-three">
+    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Trait Check Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_trait_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_trait_target} + @{modifier}]]}} {{notes=@{npc_trait_notes}}} {{showNotes=[[@{npc_trait_show_notes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsAFOA" class="btn ui-draggable"></button>
+    						</div>
+    					</div> <!-- .sheet-row -->
+    					<div class="row row-details2">
+    					    <div class="cell col-notebox">
+						        <div class="show-notes">
+						            <input type="checkbox" name="attr_npc_trait_show_notes" value="1" />
+						            <span class="label">Show notes below, in roll template</span>
+						        </div>
+						        <textarea name="attr_npc_trait_notes"></textarea>
+						    </div>
+    					</div> <!-- .sheet-row -->
+    				</fieldset> <!-- .repeating_npcTraits -->
+    			
+    			</div><!-- end table -->
+    			
+    		</div><!-- end npc-traits -->
+           
         </div>
         
         <div class="column npc-right">
