@@ -2135,7 +2135,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     background-color: #c9c9c9;
 }
 
-/* repeating fields, show/hide/highlight buttons */
+/* npc repeating fields, show/hide/highlight buttons */
 .sheet-tab-npc-container .repcontainer .repitem input.sheet-toggle-highlight[type="checkbox"] {
     width: 16px;
     height: 22px;
@@ -2234,7 +2234,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 
-/* --- column one content --- */
+/* --- npc column one content --- */
 .sheet-tab-npc-container .sheet-npc-attribute .sheet-col-name {
     width: 50px;
 }
@@ -2262,7 +2262,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 /* --- column two content --- */
 
-/* Combat Stats */
+/* NPC Combat Stats */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes {
     width: 100%;
 }
@@ -2299,7 +2299,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     background: #B7FFAA;    
 }
 
-/* active defenses */
+/* npc active defenses */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-active-defenses {
     margin-top: 10px;
 }
@@ -2371,7 +2371,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 60px;
 }
 
-/* repeating items */
+/* npc melee repeating items */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .sheet-row-stats .sheet-column-one {
     margin-left: 41px;
     width: calc(100% - 290px);
@@ -2448,7 +2448,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 60px;
 }
 
-/* repeating items */
+/* npc ranged repeating items */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-ranged-combat .sheet-row-stats .sheet-column-one {
     margin-left: 41px;
     width: calc(100% - 290px);
@@ -2523,7 +2523,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 60px;
 }
 
-/* Traits Repeating Section */
+/* NPC Traits Repeating Section */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits {
     margin-top: 10px;
 }
@@ -2546,7 +2546,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 40px;
 }
 
-/* repeating items */
+/* npc repeating items */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-row-stats .sheet-column-one {
     margin-left: 41px;
     width: calc(100% - 142px);
@@ -2579,6 +2579,65 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-npc-traits .repcontainer .repitem .sheet-cell.sheet-column-three {
+    width: 40px;
+}
+
+/* NPC Skills Repeating Section */
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills {
+    margin-top: 10px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-one {
+    width: calc(100% - 141px);
+    text-align: left;
+    margin-left: 41px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-one input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-two {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-three {
+    width: 40px;
+}
+
+/* repeating items */
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-row-stats .sheet-column-one {
+    margin-left: 41px;
+    width: calc(100% - 142px);
+}
+
+.charsheet .sheet-npc-box.sheet-npc-skills .sheet-toggle:checked ~ .sheet-row-details2 {
+    height: 104px
+}
+
+.charsheet .sheet-npc-box.sheet-npc-skills .sheet-cell.sheet-col-notebox {
+    height: 104px;
+    width: 100%;
+}
+
+.charsheet .sheet-npc-box.sheet-npc-skills .sheet-cell.sheet-col-notebox textarea {
+    height: 67px;
+    width: 97%;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repitem .sheet-row-details2 .sheet-show-notes input[type=checkbox] {
+    width: 15px ! important;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repitem .sheet-cell.sheet-column-one input {
+    text-align: left;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-two {
+    width: 60px;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-three {
     width: 40px;
 }
 

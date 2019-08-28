@@ -4888,7 +4888,7 @@
     							<input type="text" name="attr_npc_trait_target" />
     						</div>
     						<div class="cell column-three">
-    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Trait Check Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_trait_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_trait_target} + @{modifier}]]}} {{notes=@{npc_trait_notes}}} {{showNotes=[[@{npc_trait_show_notes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsAFOA" class="btn ui-draggable"></button>
+    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Trait Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_trait_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_trait_target} + @{modifier}]]}} {{notes=@{npc_trait_notes}}} {{showNotes=[[@{npc_trait_show_notes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsAFOA" class="btn ui-draggable"></button>
     						</div>
     					</div> <!-- .sheet-row -->
     					<div class="row row-details2">
@@ -4898,6 +4898,59 @@
 						            <span class="label">Show notes below, in roll template</span>
 						        </div>
 						        <textarea name="attr_npc_trait_notes"></textarea>
+						    </div>
+    					</div> <!-- .sheet-row -->
+    				</fieldset> <!-- .repeating_npcTraits -->
+    			
+    			</div><!-- end table -->
+    			
+    		</div><!-- end npc-traits -->
+           
+            <!-- _____ _____ NPC SKILL _____ _____ -->
+	        <div class="npc-box npc-skills">
+		        <div class="table">
+		            
+		            <div class="column-header npc-header-margin">
+		                <b>Skills</b>
+		            </div>
+    				
+    				    <!-- .header row -->
+			        <div class="header">
+					
+					    <div class="cell col-one">Skill</div>
+					
+					    <div class="cell col-two">
+					        <div class="sheet-popup">Level</div>
+    						<span class="sheet-tooltip">
+    						    Skill Level
+    						</span>    
+					    </div>
+					
+    				</div> <!-- .sheet-header -->
+				
+				    <!-- repeating npc skills row -->
+				    <fieldset class="repeating_npcSkills">
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_skills_highlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npc_skills_toggle_notes" />
+    					<span class="checkbox"></span>
+    					<div class="row row-stats">
+    						<div class="cell column-one">
+    							<input type="text" name="attr_npc_skill_name" />
+    						</div>
+    						<div class="cell column-two">
+    							<input type="text" name="attr_npc_skill_level" />
+    						</div>
+    						<div class="cell column-three">
+    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Skill Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_skill_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_skill_level} + @{modifier}]]}} {{notes=@{npc_skill_notes}}} {{showNotes=[[@{npc_skill_show_notes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSkill" class="btn ui-draggable"></button>
+    						</div>
+    					</div> <!-- .sheet-row -->
+    					<div class="row row-details2">
+    					    <div class="cell col-notebox">
+						        <div class="show-notes">
+						            <input type="checkbox" name="attr_npc_skill_show_notes" value="1" />
+						            <span class="label">Show notes below, in roll template</span>
+						        </div>
+						        <textarea name="attr_npc_skill_notes"></textarea>
 						    </div>
     					</div> <!-- .sheet-row -->
     				</fieldset> <!-- .repeating_npcTraits -->
