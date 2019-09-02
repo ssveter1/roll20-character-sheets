@@ -2086,6 +2086,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     background-image: none;
     border: none;
 }
+
 .sheet-tab-npc-container .sheet-column.sheet-npc-left {
     width: 190px;
 }
@@ -2097,7 +2098,6 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 .sheet-tab-npc-container .sheet-column.sheet-npc-right {
     width: 25%;
-    background-color:#ccc;
 }
 
 .sheet-tab-npc-container .sheet-column .sheet-column-header {
@@ -2267,27 +2267,38 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 100%;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-one {
-    width: 100px;
+.sheet-npc-combat-stats .sheet-column-one {
+    width: 20%;
+    float: left;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-two {
-    width: 35px;
+.sheet-npc-combat-stats .sheet-column-two {
+    width: 20%;
+    float: left;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-three {
-    width: 100px;
+.sheet-npc-combat-stats .sheet-column-three {
+    width: 60%;
+    float: left;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-four {
-    width: 35px;
+.sheet-npc-combat-stats textarea.sheet-npc-notes {
+    height: 88px;
+    margin: 0 0 0 5px;
+    width: 92%;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-five {
-    width: 100px;
+.sheet-npc-combat-stats .sheet-field-container {
+    width: auto;
+    height: 22px;
+    margin-bottom: 3px;
 }
 
-.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-combat-notes .sheet-col-six {
+.sheet-npc-combat-stats .sheet-field-name {
+    width: calc(100% - 35px);
+}
+
+.sheet-npc-combat-stats .sheet-field-value {
     width: 35px;
 }
 
@@ -2641,3 +2652,23 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 40px;
 }
 
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-label input {
+    font-weight: bold;
+    text-align: right;
+}
+
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-column-one {
+    width: 58px;
+}
+
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-column-two {
+    width: 25px;
+}
+
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-column-three {
+    width: 65px;
+}
+
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-column-four {
+    width: 65px;
+}

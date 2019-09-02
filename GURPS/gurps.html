@@ -4336,94 +4336,119 @@
 		                <b>Combat</b>
 		            </div>
     				
-    				<div class="npc-row npc-combat-stat-fields">
-    					<div class="cell col-one label">
-    						<div class="popup">Current HP</div>
-    						<span class="tooltip">
-    						    Current Hit Points
-    						</span>
-    					</div>
-    					<div class="cell col-two">
-    						<input type="text" name="attr_hit_points" value="10" />
-    					</div>
-    					<div class="cell col-three label">
-    						<div class="popup">Enumbrance</div>
-    						<span class="tooltip">
-    						    Encumbrance level based on weight 
-    						    listed in inventory.
-    						</span>
-    					</div>
-    					<div class="cell col-four">
-    						<input type="number" name="attr_encumbrance_level" value="0" readonly="readonly" />
-    					</div>
-    					<div class="cell col-five label">
-    						<div class="popup">Combat Reflexes</div>
-    						<span class="tooltip">
-    						    Check to add +1 Dodge and +2 Fear Check.
-    						</span>
-    					</div>
-    					<div class="cell col-six">
-    						<input type="checkbox" class="sheet-boolean" name="attr_combat_reflexes" value="1">
-    					</div>
-    				</div> <!-- .sheet-row -->
-    				
-    				<div class="npc-row npc-combat-stat-fields">
-    					<div class="cell col-one label">
-    						<div class="popup">Current FP</div>
-    						<span class="tooltip">
-    						    Current Fatigue Points.
-    						</span>
-    					</div>
-    					<div class="cell col-two">
-    						<input type="text" name="attr_hit_points" value="10" />
-    					</div>
-    					<div class="cell col-three label">
-    						<div class="popup">Move</div>
-    						<span class="tooltip">
-    						    Current move based on encumbrance level.
-    						</span>
-    					</div>
-    					<div class="cell col-four">
-    						<input type="text" name="attr_current_move" value="0" readonly="readonly" />
-    					</div>
-    					<div class="cell col-five label">
-    						<div class="popup">DB</div>
-    						<span class="tooltip">
-    						    Defensive Bonus
-    						</span>
-    					</div>
-    					<div class="cell col-six">
-    						<input type="number" name="attr_npc_defensive_bonus" value="0" />
-    					</div>
-    				</div> <!-- .sheet-row -->
-    				
-    				<div class="npc-row npc-combat-stat-fields">
-    					<div class="cell col-one label">
-    						<div class="popup">SM</div>
-    						<span class="tooltip">
-    						    Size Modifier
-    						</span>
-    					</div>
-    					<div class="cell col-two">
-    						<input type="text" name="attr_size" value="0" />
-    					</div>
-    					<div class="cell col-three label">
-    						<div class="popup">Dodge</div>
-    						<span class="tooltip">
-    						    Current Dodge including enumbrance penalty.
-    						</span>
-    					</div>
-    					<div class="cell col-four">
-    						<input type="text" name="attr_current_dodge" value="0" readonly="readonly">
-    					</div>
-    					<div class="cell col-five label">
-    						&nbsp;
-    					</div>
-    					<div class="cell col-six">
-    						&nbsp;
-    					</div>
-    				</div> <!-- .sheet-row -->
-    			
+    				<div class="table npc-combat-stats">
+    				    
+    				    <div class="column-one">
+    				        
+    				        <div class="field-container">
+    				            <div class="cell field-name label">
+            						<div class="popup">Cur. HP</div>
+            						<span class="tooltip">
+            						    Current Hit Points
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="text" name="attr_hit_points" value="10" />
+            					</div>
+    				        </div>
+    				        
+    				        <div class="field-container">
+    				            <div class="cell field-name label">
+            						<div class="popup">Cur. FP</div>
+            						<span class="tooltip">
+            						    Current Fatigue Points
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="text" name="attr_fatigue_points" value="10" />
+            					</div>
+    				        </div>
+    				        
+    				        <div class="field-container">
+    				            <div class="cell field-name label">
+            						<div class="popup">SM</div>
+            						<span class="tooltip">
+            						    Size Modifier
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="text" name="attr_size" value="10" />
+            					</div>
+    				        </div>
+    				       
+    				       <div class="field-container">
+    				            <div class="cell field-name label">
+            						<div class="popup">Reflexes</div>
+            						<span class="tooltip">
+            						    Combat Reflexes<br />
+            						    Check to add +1 Dodge and +2 Fear Check.
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="checkbox" class="sheet-boolean" name="attr_combat_reflexes" value="1">
+            					</div>
+    				        </div>
+    				       
+    				    </div>
+    				    
+    				    <div class="column-two">
+    				        
+    				        <div class="field-container">
+    				            <div class="cell field-name label">
+            						<div class="popup">Enc.</div>
+            						<span class="tooltip">
+            						    Encumbrance level based on weight 
+            						    listed in inventory.
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="number" name="attr_encumbrance_level" value="0" readonly="readonly" />
+            					</div>
+    				        </div>
+    				        
+    				        <div class="field-container">
+    				            <div class="cell field-name label">
+            						<div class="popup">Move</div>
+            						<span class="tooltip">
+            						    Current move based on encumbrance level.
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="text" name="attr_current_move" value="0" readonly="readonly" />
+            					</div>
+    				        </div>
+    				        
+    				        <div class="field-container">
+    				            <div class="cell field-name label">
+            						<div class="popup">Dodge</div>
+            						<span class="tooltip">
+            						    Current Dodge including enumbrance penalty.
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="text" name="attr_current_dodge" value="0" readonly="readonly">
+            					</div>
+    				        </div>
+    				       
+    				       <div class="field-container">
+    				            <div class="cell field-name label">
+                					<div class="popup">DB</div>
+            						<span class="tooltip">
+            						    Defensive Bonus
+            						</span>
+            					</div>
+            					<div class="cell field-value">
+            						<input type="number" name="attr_npc_defensive_bonus" value="0" />
+            					</div>
+    				        </div>
+    				        
+    				    </div>
+    				    
+    				    <div class="column-three">
+    				        <textarea name="attr_npc_notes" class="npc-notes" placeholder="Notes..."></textarea>
+    				    </div>
+    				    
+    				</div>
     			</div><!-- end table -->
     			
     		</div><!-- end npc-combat-notes -->
@@ -4971,6 +4996,42 @@
 		                <b>Hit Location</b>
 		            </div>
     				
+    				<div class="header">
+					    <div class="cell column-one">Where</div>
+					    <div class="cell column-two">
+						    <div class="popup">Pen</div>
+						    <span class="tooltip">
+							    This is the <strong>Penalty</strong> <br />
+                                applied to attack the <br />
+                                specific location.
+						    </span>
+					    </div>
+					    <div class="cell column-three">DR</div>
+					    <div class="cell column-four">
+					        <div class="popup">Dam</div>
+						    <span class="tooltip">
+							    Damage taken.
+						    </span>
+					    </div>
+					</div> <!-- .sheet-row -->
+				
+				    <fieldset class="repeating_npc_hit_location">
+    					<div class="row">
+    						<div class="cell column-one sheet-label">
+    							<input type="text" name="attr_npc_hit_location_name" />
+    						</div>
+    						<div class="cell column-two">
+    							<input type="text" name="attr_npc_hit_penalty" value="0" />
+    						</div>
+    						<div class="cell column-three">
+    							<input type="text" name="attr_npc_damage_resistance" value="0" />
+    						</div>
+    						<div class="cell column-four">
+    							<input type="text" name="attr_npc_damage_taken" />
+    						</div>
+    					</div> <!-- .sheet-row -->
+    				</fieldset>
+				
     			</div>
     		</div>
     		
