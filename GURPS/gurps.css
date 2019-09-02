@@ -2652,10 +2652,12 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 40px;
 }
 
+/* HIT LOCATIONS */
 .sheet-tab-npc-container .sheet-npc-hit-locations .sheet-label input {
     font-weight: bold;
     text-align: right;
 }
+
 
 .sheet-tab-npc-container .sheet-npc-hit-locations .sheet-column-one {
     width: 58px;
@@ -2671,4 +2673,17 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 .sheet-tab-npc-container .sheet-npc-hit-locations .sheet-column-four {
     width: 65px;
+}
+
+/* npc tab column three images */
+.sheet-tab-npc-container .sheet-rapid-fire-table,
+.sheet-tab-npc-container .sheet-speed-range-table {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.sheet-tab-npc-container .sheet-rapid-fire-table img, 
+.sheet-tab-npc-container .sheet-tab-npc-container img{
+    width: 179px;
 }

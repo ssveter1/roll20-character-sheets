@@ -4484,11 +4484,11 @@
 				    <fieldset class="repeating_npcDefenses">
     					<div class="row row-stats">
     						<div class="cell col-one">
-    							<input type="text" name="attr_npc_defense_name" />
+    							<input type="text" name="attr_npcDefenseName" />
     						</div>
     						<div class="cell col-two">
-    						    <input type="hidden" name="attr_npc_defense_type" value="0" />
-    							<select name="attr_npc_type">
+    						    <input type="hidden" name="attr_npcDefenseTypeId" value="0" />
+    							<select name="attr_npcDefenseType">
     								<option>Dodge</option>
     								<option>Parry</option>
     								<option>Block</option>
@@ -4497,13 +4497,13 @@
     							</select>
     						</div>
     						<div class="cell col-three">
-    							<input type="text" name="attr_npc_info" />
+    							<input type="text" name="attr_npcInfo" />
     						</div>
     						<div class="cell col-four">
-    							<input type="text" name="attr_npc_skill" />
+    							<input type="text" name="attr_npcDefensiveSkill" />
     						</div>
     						<div class="cell sheet-col-five">
-    							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Defense Roll (@{npc_type})}} {{defenseType=[[@{npc_defense_type}]]}} {{activeDefense=[[1]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_defense_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_skill} + @{modifier}]]}} {{showNotes=[[1]]}} {{notes=@{npc_info}}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
+    							<button type="roll" value="@{roll}&{template:skillRoll} {{type=Defense Roll (@{npcDefenseType})}} {{defenseType=[[@{npcDefenseTypeId}]]}} {{activeDefense=[[1]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npcDefenseName}}} {{rollResult=[[3d6]]}} {{showNotes=[[1]]}} {{notes=@{npcInfo}}} {{effectiveSkill=[[@{npcDefensiveSkill} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
     						</div>
     					</div> <!-- .sheet-row -->
     				</fieldset> <!-- .repeating_defense -->
@@ -4587,22 +4587,22 @@
 				
 				    <!-- repeating npc melee attack row -->
 				    <fieldset class="repeating_npcMeleeAttacks">
-    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_melee_highlight" />
-    					<input class="toggle toggle-notes" type="checkbox" name="npc_melee_toggle_notes" />
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npcMeleeHighlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npcMeleeToggleNotes" />
     					<span class="checkbox"></span>
     					<div class="row row-stats">
     						<div class="cell column-one">
-    							<input type="text" name="attr_npc_melee_name" />
+    							<input type="text" name="attr_npcMeleeName" />
     						</div>
     						<div class="cell column-two">
-    							<input type="text" name="attr_npc_melee_damage" />
+    							<input type="text" name="attr_npcMeleeDamage" />
     						</div>
     						<div class="cell column-three">
-    						    <input type="hidden" name="attr_npc_damage_dice_icon" class="melee-damage-dice-icon" value="explode" />
-    						    <button type="roll" value="@{roll}&{template:skillRoll} {{type=Melee Damage}} {{characterName=@{character_name}}} {{skillName=@{npc_melee_name}}} {{damageRoll=[[@{npc_melee_damage}]]}} {{damageType=@{npc_melee_type}}} {{useDamageTypeNotes=[[@{use_damage_type_notes}]]}} {{damageTypeNote=@{npc_damage_type_note}}} {{showNotes=[[1]]}} {{notes=@{npc_melee_damage_notes}}}" name="npc_melee_roll_damage" class="roll_damage" />
+    						    <input type="hidden" name="attr_npcDamageDiceIcon" class="melee-damage-dice-icon" value="explode" />
+    						    <button type="roll" value="@{roll}&{template:skillRoll} {{type=Melee Damage}} {{characterName=@{character_name}}} {{skillName=@{npcMeleeName}}} {{damageRoll=[[@{npcMeleeDamage}]]}} {{damageType=@{npcMeleeType}}} {{useDamageTypeNotes=[[@{use_damage_type_notes}]]}} {{damageTypeNote=@{npcDamageTypeNote}}} {{showNotes=[[1]]}} {{notes=@{npcMeleeDamageNotes}}}" name="npc_melee_roll_damage" class="roll_damage" />
     						</div>
     						<div class="cell column-four">
-    							<select name="attr_npc_melee_type">
+    							<select name="attr_npcMeleeType">
     								<option value="Affliction (aff)">aff</option>
     								<option value="Burning (burn)">burn</option>
     								<option value="Corrosion (cor)">cor</option>
@@ -4617,16 +4617,16 @@
     								<option value="Special (spec)">spec</option>
     								<option value="Toxic (tox)">tox</option>
     							</select>
-    							<input type="hidden" name="attr_npc_damage_type_note" value="@{damage_type_note_cut}" />
+    							<input type="hidden" name="attr_npcDamageTypeNote" value="@{damage_type_note_cut}" />
     						</div>
     						<div class="cell column-five">
-    							<input type="text" name="attr_npc_melee_reach" />
+    							<input type="text" name="attr_npcMeleeReach" />
     						</div>
     						<div class="cell column-six">
-    							<input type="text" name="attr_npc_melee_skill" />
+    							<input type="text" name="attr_npcMeleeSkill" />
     						</div>
     						<div class="cell column-seven">
-    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Melee Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_melee_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_melee_skill} + @{modifier}]]}} {{reach=@{npc_melee_reach}}} {{notes=@{npc_melee_notes}}} {{showNotes=[[1]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
+    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Melee Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npcMeleeName}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npcMeleeSkill} + @{modifier}]]}} {{reach=@{npcMeleeReach}}} {{notes=@{npcMeleeNotes}}} {{showNotes=[[1]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
     						</div>
     					</div> <!-- .sheet-row -->
     					<div class="row row-details2">
@@ -4634,7 +4634,7 @@
     						    Weapon Notes
     						</div>
     						<div class="cell col1">
-    							<input type="text" name="attr_npc_melee_notes" />
+    							<input type="text" name="attr_npcMeleeNotes" />
     						</div>
     						<div class="cell col2 label">
     							<div class="popup">Damage Notes</div>
@@ -4644,7 +4644,7 @@
     						    </span>
     						</div>
     						<div class="cell col3">
-    							<input type="text" name="attr_npc_melee_damage_notes" />
+    							<input type="text" name="attr_npcMeleeDamageNotes" />
     						</div>
     					</div> <!-- .sheet-row -->
     				</fieldset> <!-- .repeating_npcMeleeAttacks -->
@@ -4727,22 +4727,22 @@
 				
 				    <!-- repeating npc ranged attack row -->
 				    <fieldset class="repeating_npcRangedAttacks">
-    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_ranged_highlight" />
-    					<input class="toggle toggle-notes" type="checkbox" name="npc_ranged_toggle_notes" />
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npcRangedHighlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npcRangedToggleNotes" />
     					<span class="checkbox"></span>
     					<div class="row row-stats">
     						<div class="cell column-one">
-    							<input type="text" name="attr_npc_ranged_name" />
+    							<input type="text" name="attr_npcRangedName" />
     						</div>
     						<div class="cell column-two">
-    							<input type="text" name="attr_npc_ranged_damage" />
+    							<input type="text" name="attr_npcRangedDamage" />
     						</div>
     						<div class="cell column-three">
-    						    <input type="hidden" name="attr_npc_ranged_damage_dice_icon" class="melee-damage-dice-icon" value="explode" />
-    						    <button type="roll" value="@{roll}&{template:skillRoll} {{type=Ranged Damage}} {{characterName=@{character_name}}} {{skillName=@{npc_ranged_name}}} {{damageRoll=[[@{npc_ranged_damage}]]}} {{damageType=@{npc_ranged_type}}} {{useDamageTypeNotes=[[@{use_damage_type_notes}]]}} {{damageTypeNote=@{npc_ranged_damage_type_note}}} {{showNotes=[[1]]}} {{notes=@{npc_ranged_damage_notes}}}" name="npc_ranged_roll_damage" class="roll_damage" />
+    						    <input type="hidden" name="attr_npcRangedDamageDiceIcon" class="melee-damage-dice-icon" value="explode" />
+    						    <button type="roll" value="@{roll}&{template:skillRoll} {{type=Ranged Damage}} {{characterName=@{character_name}}} {{skillName=@{npcRangedName}}} {{damageRoll=[[@{npcRangedDamage}]]}} {{damageType=@{npcRangedType}}} {{useDamageTypeNotes=[[@{use_damage_type_notes}]]}} {{damageTypeNote=@{npcRangedDamageTypeNote}}} {{showNotes=[[1]]}} {{notes=@{npcRangedDamageNotes}}}" name="npc_ranged_roll_damage" class="roll_damage" />
     						</div>
     						<div class="cell column-four">
-    							<select name="attr_npc_ranged_type">
+    							<select name="attr_npcRangedType">
     								<option value="Affliction (aff)">aff</option>
     								<option value="Burning (burn)">burn</option>
     								<option value="Corrosion (cor)">cor</option>
@@ -4757,16 +4757,16 @@
     								<option value="Special (spec)">spec</option>
     								<option value="Toxic (tox)">tox</option>
     							</select>
-    							<input type="hidden" name="attr_npc_ranged_damage_type_note" value="@{damage_type_note_cut}" />
+    							<input type="hidden" name="attr_npcRangedDamageTypeNote" value="@{damage_type_note_cut}" />
     						</div>
     						<div class="cell column-five">
-    							<input type="text" name="attr_npc_ranged_acc" />
+    							<input type="text" name="attr_npcRangedAcc" />
     						</div>
     						<div class="cell column-six">
-    							<input type="text" name="attr_npc_ranged_skill" />
+    							<input type="text" name="attr_npcRangedSkill" />
     						</div>
     						<div class="cell column-seven">
-    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Ranged Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_ranged_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_ranged_skill} + @{modifier}]]}} {{notes=@{npc_ranged_notes}}} {{showNotes=[[1]]}} {{rof=@{npc_ranged_rof}}} {{recoil=@{npc_ranged_recoil}}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
+    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Ranged Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npcRangedName}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npcRangedSkill} + @{modifier}]]}} {{notes=@{npcRangedNotes}}} {{showNotes=[[1]]}} {{rof=@{npcRangedRof}}} {{recoil=@{npcRangedRecoil}}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
     						</div>
     					</div> <!-- .sheet-row -->
     					<div class="row row-details2">
@@ -4835,29 +4835,29 @@
     					    </div>
     					    <div class="container-stats margin-to-notes">
         					    <div class="cell col-range label">
-        					        <input type="text" name="attr_npc_ranged_range" />
+        					        <input type="text" name="attr_npcRangedRange" />
         					    </div>
         						<div class="cell col-rof label">
-        					        <input type="text" name="attr_npc_ranged_rof" />
+        					        <input type="text" name="attr_npcRangedRof" />
         					    </div>
         						<div class="cell col-shots label">
-        					        <input type="text" name="attr_npc_ranged_shots" />
+        					        <input type="text" name="attr_npcRangedShots" />
         					    </div>
         						<div class="cell col-bulk label">
-        					        <input type="text" name="attr_npc_ranged_bulk" />
+        					        <input type="text" name="attr_npcRangedBulk" />
         					    </div>
         					    <div class="cell col-recoil label">
-        					        <input type="text" name="attr_npc_ranged_recoil" />
+        					        <input type="text" name="attr_npcRangedRecoil" />
         					    </div>
         					    <div class="cell col-malfunction label">
-        					        <input type="text" name="attr_npc_ranged_malfunction" />
+        					        <input type="text" name="attr_npcRangedMalfunction" />
         					    </div>
     					    </div>
     						<div class="cell col0 label">
     						    Weapon Notes
     						</div>
     						<div class="cell col1">
-    							<input type="text" name="attr_npc_ranged_notes" />
+    							<input type="text" name="attr_npcRangedNotes" />
     						</div>
     						<div class="cell col2 label">
     							<div class="popup">Damage Notes</div>
@@ -4867,10 +4867,10 @@
     						    </span>
     						</div>
     						<div class="cell col3">
-    							<input type="text" name="attr_npc_ranged_damage_notes" />
+    							<input type="text" name="attr_npcRangedDamageNotes" />
     						</div>
     					</div> <!-- .sheet-row -->
-    				</fieldset> <!-- .repeating_npcMeleeAttacks -->
+    				</fieldset> <!-- .repeating_npcRangedAttacks -->
     				
 				
 			    </div><!-- .table -->
@@ -4902,27 +4902,27 @@
 				
 				    <!-- repeating npc traits row -->
 				    <fieldset class="repeating_npcTraits">
-    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_trait_highlight" />
-    					<input class="toggle toggle-notes" type="checkbox" name="npc_trait_toggle_notes" />
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npcTraitHighlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npcTraitToggleNotes" />
     					<span class="checkbox"></span>
     					<div class="row row-stats">
     						<div class="cell column-one">
-    							<input type="text" name="attr_npc_trait_name" />
+    							<input type="text" name="attr_npcTraitName" />
     						</div>
     						<div class="cell column-two">
-    							<input type="text" name="attr_npc_trait_target" />
+    							<input type="text" name="attr_npcTraitTarget" />
     						</div>
     						<div class="cell column-three">
-    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Trait Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_trait_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_trait_target} + @{modifier}]]}} {{notes=@{npc_trait_notes}}} {{showNotes=[[@{npc_trait_show_notes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsAFOA" class="btn ui-draggable"></button>
+    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Trait Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npcTraitName}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npcTraitTarget} + @{modifier}]]}} {{notes=@{npcTraitNotes}}} {{showNotes=[[@{npcTraitShowNotes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsAFOA" class="btn ui-draggable"></button>
     						</div>
     					</div> <!-- .sheet-row -->
     					<div class="row row-details2">
     					    <div class="cell col-notebox">
 						        <div class="show-notes">
-						            <input type="checkbox" name="attr_npc_trait_show_notes" value="1" />
+						            <input type="checkbox" name="attr_npcTraitShowNotes" value="1" />
 						            <span class="label">Show notes below, in roll template</span>
 						        </div>
-						        <textarea name="attr_npc_trait_notes"></textarea>
+						        <textarea name="attr_npcTraitNotes"></textarea>
 						    </div>
     					</div> <!-- .sheet-row -->
     				</fieldset> <!-- .repeating_npcTraits -->
@@ -4955,27 +4955,27 @@
 				
 				    <!-- repeating npc skills row -->
 				    <fieldset class="repeating_npcSkills">
-    				    <input class="toggle-highlight" type="checkbox" name="attr_npc_skills_highlight" />
-    					<input class="toggle toggle-notes" type="checkbox" name="npc_skills_toggle_notes" />
+    				    <input class="toggle-highlight" type="checkbox" name="attr_npcSkillsHighlight" />
+    					<input class="toggle toggle-notes" type="checkbox" name="npcSkillsToggleNotes" />
     					<span class="checkbox"></span>
     					<div class="row row-stats">
     						<div class="cell column-one">
-    							<input type="text" name="attr_npc_skill_name" />
+    							<input type="text" name="attr_npcSkillName" />
     						</div>
     						<div class="cell column-two">
-    							<input type="text" name="attr_npc_skill_level" />
+    							<input type="text" name="attr_npcSkillLevel" />
     						</div>
     						<div class="cell column-three">
-    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Skill Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npc_skill_name}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npc_skill_level} + @{modifier}]]}} {{notes=@{npc_skill_notes}}} {{showNotes=[[@{npc_skill_show_notes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSkill" class="btn ui-draggable"></button>
+    						    <button type="roll" value="@{roll}&amp;{template:skillRoll} {{type=NPC Skill Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npcSkillName}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npcSkillLevel} + @{modifier}]]}} {{notes=@{npcSkillNotes}}} {{showNotes=[[@{npcSkillShowNotes}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSkill" class="btn ui-draggable"></button>
     						</div>
     					</div> <!-- .sheet-row -->
     					<div class="row row-details2">
     					    <div class="cell col-notebox">
 						        <div class="show-notes">
-						            <input type="checkbox" name="attr_npc_skill_show_notes" value="1" />
+						            <input type="checkbox" name="attr_npcSkillShowNotes" value="1" />
 						            <span class="label">Show notes below, in roll template</span>
 						        </div>
-						        <textarea name="attr_npc_skill_notes"></textarea>
+						        <textarea name="attr_npcSkillNotes"></textarea>
 						    </div>
     					</div> <!-- .sheet-row -->
     				</fieldset> <!-- .repeating_npcTraits -->
@@ -4990,6 +4990,7 @@
             
             <!-- _____ _____ NPC HIT LOCATIONS _____ _____ -->
 	        <div class="npc-box npc-hit-locations">
+	            
 		        <div class="table">
 		            
 		            <div class="column-header">
@@ -5018,21 +5019,29 @@
 				    <fieldset class="repeating_npcHitLocation">
     					<div class="row">
     						<div class="cell column-one sheet-label">
-    							<input type="text" name="attr_npc_hit_location_name" />
+    							<input type="text" name="attr_npcHitLocationName" />
     						</div>
     						<div class="cell column-two">
-    							<input type="text" name="attr_npc_hit_penalty" value="0" />
+    							<input type="text" name="attr_npcHitPenalty" value="0" />
     						</div>
     						<div class="cell column-three">
-    							<input type="text" name="attr_npc_damage_resistance" value="0" />
+    							<input type="text" name="attr_npcDamageResistance" value="0" />
     						</div>
     						<div class="cell column-four">
-    							<input type="text" name="attr_npc_damage_taken" />
+    							<input type="text" name="attr_npcDamageTaken" />
     						</div>
     					</div> <!-- .sheet-row -->
     				</fieldset>
 				
-    			</div>
+    			</div><!-- end hit location table -->
+    			
+    			<div class="rapid-fire-table">
+                    <img src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/GURPS/Images/Rapid_Fire_Table.png" title="Rapid Fire Table" alt="Rapid Fire Table" />
+                </div>
+                <div class="speed-range-table"> <!-- .speed-range-table image-->
+                    <img src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/GURPS/Images/Speed_Range_Table.PNG"  title="Speed/Range Table" alt="GURPS Speed/Range Table" /> 
+                </div> <!-- .speed-range-table image-->
+    			
     		</div>
     		
         </div>
@@ -8641,7 +8650,71 @@ Skull Damage x4
 		
 	});
 	
-	// update damage notes for thrown object
+	// set note values for damage types
+    // Update thrust and swing when striking st is updated
+	on('change:repeating_npcMeleeAttacks:npcMeleeType', function(event){
+
+        console.log("changed npc melee type");
+
+		getAttrs(['repeating_npcMeleeAttacks_npcMeleeType',
+		    'damage_type_note_cut',
+		    'damage_type_note_imp',
+		    'damage_type_note_cr',
+		    'damage_type_note_pi_minus',
+		    'damage_type_note_pi',
+		    'damage_type_note_pi_plus',
+		    'damage_type_note_pi_plus_plus',
+		    'damage_type_note_aff',
+		    'damage_type_note_burn',
+		    'damage_type_note_cor',
+		    'damage_type_note_fat',
+		    'damage_type_note_tox',
+		    'damage_type_note_spec'
+		], function(values) {
+		    
+		    console.log("damage type:", values.repeating_npcMeleeAttacks_npcMeleeType);
+		    
+		    var typeNote = getDamageTypeNote(values.repeating_npcMeleeAttacks_npcMeleeType, values);
+		    
+		    setAttrs({
+		        "repeating_npcMeleeAttacks_npcDamageTypeNote": typeNote
+		    });
+		    
+		});
+		
+	});
+    
+    // set note values for damage types
+    // Update thrust and swing when striking st is updated
+	on('change:repeating_npcRangedAttacks:npcRangedType', function(event){
+
+		getAttrs(['repeating_npcRangedAttacks_npcRangedType',
+		    'damage_type_note_cut',
+		    'damage_type_note_imp',
+		    'damage_type_note_cr',
+		    'damage_type_note_pi_minus',
+		    'damage_type_note_pi',
+		    'damage_type_note_pi_plus',
+		    'damage_type_note_pi_plus_plus',
+		    'damage_type_note_aff',
+		    'damage_type_note_burn',
+		    'damage_type_note_cor',
+		    'damage_type_note_fat',
+		    'damage_type_note_tox',
+		    'damage_type_note_spec'
+		], function(values) {
+		    
+		    var typeNote = getDamageTypeNote(values.repeating_npcRangedAttacks_npcRangedType, values);
+		    
+		    setAttrs({
+		        "repeating_npcRangedAttacks_npcRangedDamageTypeNote": typeNote
+		    });
+		    
+		});
+		
+	});
+    
+    // update damage notes for thrown object
 	on('change:thrown_object_damage_type', function(event) {
 	    
 	    updateThrownObject();
@@ -9522,12 +9595,63 @@ Skull Damage x4
 			        
 			}
 			
+			// set the hidden value
+			setAttrs({
+			    repeating_defense_defense_type: defenseTypeId
+			});
+			
+		});
+	    
+	});
+	
+	// If NPC defense type changed, update hidden defense type
+	on('change:repeating_npcDefenses:npcDefenseType', function(event){
+	    
+	    getAttrs(['repeating_npcDefenses_npcDefenseType'], function(v) {
+			
+			var defenseTypeName = v.repeating_npcDefenses_npcDefenseType;
+			
+			var defenseTypeId = 1;
+			
+// 		    <option>Dodge</option> = 1
+// 			<option>Parry</option> = 2
+// 			<option>Block</option> = 3
+// 			<option>Magic</option> = 4
+// 			<option>Other</option> = 5
+			
+			defenseTypeName = defenseTypeName.toLowerCase();
+			
+			switch(defenseTypeName) {
+			    
+			    case "parry":
+			        defenseTypeId = 2;
+			        break;
+			    
+			    case "block":
+			        defenseTypeId = 3;
+			        break;
+			    
+			    case "magic":
+			        defenseTypeId = 4;
+			        break;
+			    
+			    case "block":
+			        defenseTypeId = 5;
+			        break;
+			    
+			    default:
+			    case "dodge":
+			        defenseTypeId = 1;
+			        break;
+			        
+			}
+			
 			console.log(`defense type name: ${defenseTypeName}`);
 			console.log(`defense type id: ${defenseTypeId}`);
 			
 			// set the hidden value
 			setAttrs({
-			    repeating_defense_defense_type: defenseTypeId
+			    repeating_npcDefenses_npcDefenseTypeId: defenseTypeId
 			});
 			
 		});
