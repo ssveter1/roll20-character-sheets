@@ -4343,8 +4343,70 @@
     				        <div class="field-container">
     				            <div class="cell field-name label">
             						<div class="popup">Cur. HP</div>
-            						<span class="tooltip">
-            						    Current Hit Points
+            						<span class="sheet-tooltip">
+            							Current Hit Points
+            							<br />
+            							When you're hit points are low, you take penalties.
+            							<br />
+            							See Page 419.
+            							<table>
+            								<tbody>
+            									<tr>
+            										<td class="sheet-label">Reeling</td>
+            										<td><input type="text" name="attr_hp_reeling" value="[[floor((@{hit_points|max}) / 3)]]" disabled="disabled"></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- Halve Move, Speed, and Dodge
+            										</td>
+            									</tr>
+            									<tr>
+            										<td class="sheet-label">Verge of Collapse</td>
+            										<td><input type="text" value="Less than 0" readonly="readonly" ></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- Roll every turn @{VS} HT or fall unconscious.
+            											<br />
+            												- Your HT roll is at -1 for every 1xHP you are below 0.
+            											<br />
+            												- If you do nothing, and don't defend, you don't have to roll.
+            										</td>
+            									</tr>
+            									<tr>
+            										<td class="sheet-label">Verge of Death</td>
+            										<td><input type="number" name="attr_hp_verge" value="[[(@{hit_points|max}) * -1]]" disabled="disabled"></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- Roll once @{VS} HT to stay alive.
+            											<br />
+            												- If you fail by 1 or 2 you are mortally wounded, but not dead.
+            											<br />
+            												- Roll again every time you take injury that puts you below<br />
+            												another multiple of your max HP.
+            										</td>
+            									</tr>
+            									<tr>
+            										<td class="sheet-label">Death</td>
+            										<td><input type="number" name="attr_hp_death" value="[[(@{hit_points|max}) * -5]]" disabled="disabled"></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- You are dead.
+            										</td>
+            									</tr>
+            									<tr>
+            										<td class="sheet-label">Total Destruction</td>
+            										<td><input type="number" name="attr_hp_destruction" value="[[(@{hit_points|max}) * -10]]" disabled="disabled"></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- Your body has been destroyed beyond recognition or ressurection.
+            										</td>
+            									</tr>
+            								</tbody>
+            							</table>
             						</span>
             					</div>
             					<div class="cell field-value">
@@ -4355,8 +4417,53 @@
     				        <div class="field-container">
     				            <div class="cell field-name label">
             						<div class="popup">Cur. FP</div>
-            						<span class="tooltip">
-            						    Current Fatigue Points
+            						<span class="sheet-tooltip">
+            							Current Fatigue Points
+            							<br />
+            							When you're fatigue points are low you take penalties.
+            							<br />
+            							See Page 426.
+            							<table>
+            								<tbody>
+            									<tr>
+            										<td class="sheet-label">Tired</td>
+            										<td><input type="number" name="attr_fp_tired" value="[[floor((@{fatigue_points|max}) / 3)]]" disabled="disabled"></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- Halve Move, ST, and Dodge
+            										</td>
+            									</tr>
+            									<tr>
+            										<td class="sheet-label">Verge of Collapse</td>
+            										<td><input type="text" value="Less than 0" disabled="disabled"></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- Further FP loss also comes off your HP.
+            											<br />
+            												- Roll against Will to do anything besides rest or talk.
+            											<br />
+            												- If you fail your Will roll, you fall unconscious.
+            											<br />
+            												- On a critical failure, roll @{VS} HT or suffer a heart attack.
+            										</td>
+            									</tr>
+            									<tr>
+            										<td class="sheet-label">Unconscious</td>
+            										<td><input type="number" name="attr_fp_unconscious" value="[[-(@{fatigue_points|max})]]" disabled="disabled"></td>
+            									</tr>
+            									<tr>
+            										<td colspan="2">
+            												- Immediately fall unconscious
+            											<br />
+            												- FP can't drop any lower, but you still lose HP.
+            											<br />
+            												- You regain consciousness at 0 FP
+            										</td>
+            									</tr>
+            								</tbody>
+            							</table>
             						</span>
             					</div>
             					<div class="cell field-value">
@@ -4368,7 +4475,8 @@
     				            <div class="cell field-name label">
             						<div class="popup">SM</div>
             						<span class="tooltip">
-            						    Size Modifier
+            						    Size Modifier<br />
+            						    Be sure to apply this modifier to the hit location table.
             						</span>
             					</div>
             					<div class="cell field-value">
@@ -4434,7 +4542,8 @@
     				            <div class="cell field-name label">
                 					<div class="popup">DB</div>
             						<span class="tooltip">
-            						    Defensive Bonus
+            						    Defensive Bonus<br />
+            						    Be sure to apply this to appropriate active defenses.
             						</span>
             					</div>
             					<div class="cell field-value">
@@ -4570,10 +4679,9 @@
     					<div class="cell col-five">
     					    <div class="sheet-popup">REACH</div>
     						<span class="sheet-tooltip">
-    							Weapon reach. The distance in yards that the weapon can reach.
-    							<br />
-    							<strong>C</strong>: this weapon can be used in close combat.
-    							<br />
+    							Weapon reach.<br />
+    							The distance in yards that the weapon can reach.<br />
+    							<strong>C</strong>: this weapon can be used in close combat.<br />
     							<strong>*</strong>: the weapon is awkward, and requires a Ready<br />
     							maneuver to switch between different reaches.
     						</span>    
@@ -4766,7 +4874,7 @@
     							<input type="text" name="attr_npcRangedSkill" />
     						</div>
     						<div class="cell column-seven">
-    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Ranged Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npcRangedName}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npcRangedSkill} + @{modifier}]]}} {{notes=@{npcRangedNotes}}} {{showNotes=[[1]]}} {{rof=@{npcRangedRof}}} {{recoil=@{npcRangedRecoil}}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsSL" />
+    						    <button type="roll" class="template-attack-roll" value="@{roll}&{template:skillRoll} {{type=Ranged Attack}} {{activeDefense=[[0]]}} {{showHitLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=@{npcRangedName}}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{npcRangedSkill} + @{modifier}]]}} {{notes=@{npcRangedNotes}}} {{showNotes=[[1]]}} {{rof=@{npcRangedRof}}} {{recoil=@{npcRangedRecoil}}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}} {{malfunction=[[@{npcRangedMalfunction}]]}}" name="roll_vsSL" />
     						</div>
     					</div> <!-- .sheet-row -->
     					<div class="row row-details2">
@@ -4782,27 +4890,18 @@
         						<div class="cell col-rof label">
         					        <div class="sheet-popup">RoF</div>
             						<span class="sheet-tooltip">
-            							Rate of Fire. Ref. B270<br />
-            							The maximum number of shots that can be fired in <br />
-            							one turn (by a regular person).<br />
-            							The minimum number of shots is 1.<br />
-            							<strong>!</strong>: minimum RoF is 1/4 of the maximum, rounded up.<br />
-            							<strong>mxn</strong>: fires the first number of shots, which each then<br />
-            							split into the second number (eg. shotguns)<br />
-            							<strong>Jet</strong>: shoots a continuous stream of fliud. See page 106.
+            							Rate of Fire. Ref. B270
             						</span>
         					    </div>
         						<div class="cell col-shots label">
         					        <div class="sheet-popup">Shots</div>
             						<span class="sheet-tooltip">
-            						    The number of shots that can be fired before the<br />
-            							weapon must be reloaded.<br />
+            						    The number of shots that can be fired before reload.<br />
             							The parenthetical number indicates the number of 1<br />
-            							second ready maneuvers required to reload the<br />
-            							weapon.<br />
-            							<strong>T</strong>: the weapon is thrown. To "reload" it, pick it up.<br />
-            							<strong>i</strong>: you must load the shots individually. the listed<br />
-            							time is for each shot. Ref. B270
+            							second ready maneuvers required to reload.<br />
+            							<strong>T</strong>: the weapon is thrown. Pick up to reload.<br />
+            							<strong>i</strong>: load the shots individually. Ref. B270<br />
+            							<string>Jet</string>: continuous stream.
             						</span>
         					    </div>
         						<div class="cell col-bulk label">
@@ -4827,7 +4926,7 @@
             						<span class="sheet-tooltip">
             						    Malfunction. A weapon will jam, misfire, or otherwise<br />
             						    fail to function on any attack roll equal to  or <br />
-            						    greater than its Malf.; see Malfunctions (p. 407).<br /><br />
+            						    greater than its Malf.; see Malfunctions (p. B407).<br />
                                         Malfunction number is a function of tech level:<br />
                                         it is 12 at TL3, 14 at TL4, 16 at TL5, and 17 at TL6+.
             						</span>
@@ -5962,6 +6061,16 @@ Skull Damage x4
                     </td>
                 </tr>
                 {{/effectiveSkill}}
+                
+                {{#malfunction}}
+                <tr>
+                    <td class="label">Malfunction:</td>
+                    <td class="damage-roll">
+                        {{malfunction}}
+                    </td>
+                </tr>
+                {{/malfunction}}
+                
                 {{#damageRoll}}
                 <tr>
                     <td class="label">Damage:</td>

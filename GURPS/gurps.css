@@ -2078,6 +2078,12 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     float: left;
 }
 
+.sheet-tab-npc-container .sheet-tooltip table .sheet-label,
+.sheet-tab-npc-container .sheet-tooltip table tbody td,
+.sheet-tab-npc-container .sheet-tooltip table input {
+    text-align: left;
+}
+
 .sheet-tab-npc-container .sheet-column .sheet-table button.btn {
     margin: 0;
     height: 12px;
@@ -2416,6 +2422,15 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     width: 22px;
 }
 
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .repitem .sheet-row-details2 {
+    padding-top: 5px;
+    height: 55px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-melee-combat .repitem .sheet-row-details2 .sheet-cell {
+    margin-bottom: 5px;
+}
+
 /* npc ranged attack */
 
 /* adjust height of additional ranged information */
@@ -2532,6 +2547,19 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 
 .sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-malfunction {
     width: 60px;
+}
+
+/* tooltips for ranged section */
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-range .sheet-tooltip {
+    margin-left: -20px;
+}
+
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-recoil .sheet-tooltip {
+    margin-left: -157px;
+}
+
+.sheet-tab-npc-container .sheet-npc-ranged-combat .repcontainer .repitem .sheet-cell.sheet-col-malfunction .sheet-tooltip {
+    margin-left: -216px;
 }
 
 /* NPC Traits Repeating Section */
