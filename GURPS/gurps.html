@@ -4476,7 +4476,7 @@
             						<div class="popup">SM</div>
             						<span class="tooltip">
             						    Size Modifier<br />
-            						    Be sure to apply this modifier to the hit location table.
+            						    NOTE: Applied when hit location button is pressed.
             						</span>
             					</div>
             					<div class="cell field-value">
@@ -5095,8 +5095,8 @@
 		            <div class="column-header">
 		                <b>Hit Location</b>
 		            </div>
-    				
-    				<div class="header">
+		            
+		            <div class="header">
 					    <div class="cell column-one">Where</div>
 					    <div class="cell column-two">
 						    <div class="popup">Pen</div>
@@ -5132,6 +5132,12 @@
     					</div> <!-- .sheet-row -->
     				</fieldset>
 				
+				    <div class="action-buttons">
+		                <button type="action" title="Add humanoid hit locations." name="act_addNpcHumanoidLocations" class="btn" />Humanoid</button>
+		                <button type="action" title="Add animal hit locations." name="act_addNpcAnimalLocations" class="btn" />Animal</button>
+		                <button type="action" title="Delete all hit locations." name="act_clearNpcLocations" class="btn reset" />Clear</button>
+		            </div>
+    				
     			</div><!-- end hit location table -->
     			
     			<div class="rapid-fire-table">
@@ -9755,9 +9761,6 @@ Skull Damage x4
 			        
 			}
 			
-			console.log(`defense type name: ${defenseTypeName}`);
-			console.log(`defense type id: ${defenseTypeId}`);
-			
 			// set the hidden value
 			setAttrs({
 			    repeating_npcDefenses_npcDefenseTypeId: defenseTypeId
@@ -9794,9 +9797,6 @@ Skull Damage x4
 				getFields.push(damageTypeField);
 				
 			}
-			
-			console.log("fields for repeating defense");
-			console.log(getFields);
 			
 			getAttrs(getFields, function (values) {
 		    
@@ -9846,9 +9846,6 @@ Skull Damage x4
 		            
                 });
                 
-                console.log("fields to update for repeating defense");
-			    console.log(updateFields);
-                
 				setAttrs(updateFields);
 			    
 			});		
@@ -9856,5 +9853,169 @@ Skull Damage x4
 		});
 		
 	} 
+	
+	on("clicked:addNpcHumanoidLocations", function() {
+	   
+	    console.log("adding humanoid hit locations");
+	   
+        addNpcHitLocations("humanoid");
+        
+	});
+	
+	on("clicked:addNpcAnimalLocations", function() {
+	   
+        console.log("adding animal hit locations");
+        
+        addNpcHitLocations("animal");
+	   
+	});
+	
+	on("clicked:clearNpcLocations", function() {
+	   
+	    clearNpcHitLocations();
+	   
+	});
+	
+	/**
+	 * Add NPC hit locations based on create type.
+	 * Will apply size modifier
+	 * 
+	 * @param creatureType humanoid | animal
+	 */
+	function addNpcHitLocations(creatureType) {
+	    
+	    getAttrs(["size"], function (values) {
+	        
+	        var sizeModifier = parseInt(values.size);
+	        
+	        console.log("size modifier: ", sizeModifier);
+	        
+	        var locations = null;
+	        
+	        switch(creatureType) {
+	            
+                case "animal":
+	                locations = getAnimalHitLocations();
+	                break;
+	            
+	            case "humanoid":
+	            default:
+	                locations = getHumanoidHitLocations();
+	                break;
+	        }
+	        
+	        console.log(locations);
+	        
+	        var newrowattrs = {};
+    
+	        // loop through each location and a row to npc hit location
+	        locations.forEach(function(location) {
+	            
+	            var newrowid = generateRowID();
+	            
+	            // set location name
+                newrowattrs["repeating_npcHitLocation_" + newrowid + "_npcHitLocationName"] = location.location;
+
+                // set location hit penalty
+                var penalty = location.penalty + sizeModifier;
+                
+                newrowattrs["repeating_npcHitLocation_" + newrowid + "_npcHitPenalty"] = penalty;
+                
+                newrowattrs["repeating_npcHitLocation_" + newrowid + "_npcDamageResistance"] = location.damageResistance;
+                
+	        });
+	        
+	        setAttrs(newrowattrs);
+	        
+	    });
+	    
+	}
+	
+	/**
+	 * Deletes all the npc hit locations
+	 */
+	function clearNpcHitLocations() {
+	    
+        var sectionName = "repeating_npcHitLocation";
+		
+		getSectionIDs(sectionName, function (ids) {
+		
+    		if (ids.length === 0 ) {
+    			return;
+    		}
+    		
+            // loop through the rows
+			for (var i = 0; i < ids.length; i++) {
+		
+                removeRepeatingRow("repeating_npcHitLocation_" + ids[i]);
+				
+			}
+    		
+		});
+    
+	}
+	
+	/**
+	 * return an array of hit locations objects 
+	 * for a humanoid.
+	 * 
+	 * @return array
+	 */
+	function getHumanoidHitLocations() {
+	    
+	    var locations = [
+	                        {location: "Skull", penalty: -7, damageResistance: 2},
+	                        {location: "Face", penalty: -5, damageResistance: 0},
+	                        {location: "Eye, R", penalty: -9, damageResistance: 0},
+	                        {location: "Eye, L", penalty: -9, damageResistance: 0},
+	                        {location: "Neck", penalty: -5, damageResistance: 0},
+	                        {location: "Arm, R", penalty: -2, damageResistance: 0},
+	                        {location: "Arm, L", penalty: -2, damageResistance: 0},
+	                        {location: "Hand, R", penalty: -4, damageResistance: 0},
+	                        {location: "Hand, L", penalty: -4, damageResistance: 0},
+	                        {location: "Torso", penalty: 0, damageResistance: 0},
+	                        {location: "Vitals", penalty: -3, damageResistance: 0},
+	                        {location: "Groin", penalty: -3, damageResistance: 0},
+	                        {location: "Leg, R", penalty: -2, damageResistance: 0},
+	                        {location: "Leg, L", penalty: -2, damageResistance: 0},
+	                        {location: "Foot, R", penalty: -4, damageResistance: 0},
+	                        {location: "Foot, L", penalty: -4, damageResistance: 0},
+	                    ];
+	                    
+        return locations;
+	                    
+    }
+    
+    /**
+	 * return an array of hit locations objects 
+	 * for an animal.
+	 * 
+	 * @return array
+	 */
+	function getAnimalHitLocations() {
+	    
+	    var locations = [
+	                        {location: "Skull", penalty: -7, damageResistance: 2},
+	                        {location: "Face", penalty: -5, damageResistance: 0},
+	                        {location: "Eye, R", penalty: -9, damageResistance: 0},
+	                        {location: "Eye, L", penalty: -9, damageResistance: 0},
+	                        {location: "Neck", penalty: -5, damageResistance: 0},
+	                        {location: "F leg, R", penalty: -2, damageResistance: 0},
+	                        {location: "F leg, L", penalty: -2, damageResistance: 0},
+	                        {location: "F foot, R", penalty: -4, damageResistance: 0},
+	                        {location: "F foot, L", penalty: -4, damageResistance: 0},
+	                        {location: "Torso", penalty: 0, damageResistance: 0},
+	                        {location: "Vitals", penalty: -3, damageResistance: 0},
+	                        {location: "Groin", penalty: -3, damageResistance: 0},
+	                        {location: "H Leg, R", penalty: -2, damageResistance: 0},
+	                        {location: "H Leg, L", penalty: -2, damageResistance: 0},
+	                        {location: "H Foot, R", penalty: -4, damageResistance: 0},
+	                        {location: "H Foot, L", penalty: -4, damageResistance: 0},
+	                        {location: "Tail", penalty: -3, damageResistance: 0},
+	                    ];
+	                    
+        return locations;
+	                    
+    }
     
 </script>

@@ -2103,7 +2103,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-column.sheet-npc-right {
-    width: 25%;
+    width: 213px;
 }
 
 .sheet-tab-npc-container .sheet-column .sheet-column-header {
@@ -2684,8 +2684,8 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 .sheet-tab-npc-container .sheet-npc-hit-locations .sheet-label input {
     font-weight: bold;
     text-align: right;
+    font-size: 12px;
 }
-
 
 .sheet-tab-npc-container .sheet-npc-hit-locations .sheet-column-one {
     width: 58px;
@@ -2711,7 +2711,18 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
     text-align: center;
 }
 
-.sheet-tab-npc-container .sheet-rapid-fire-table img, 
-.sheet-tab-npc-container .sheet-tab-npc-container img{
-    width: 179px;
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-action-buttons {
+    padding: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-action-buttons button.sheet-btn {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.sheet-tab-npc-container .sheet-npc-hit-locations .sheet-action-buttons button.sheet-reset {
+    background: red;
+    color: white;
 }
