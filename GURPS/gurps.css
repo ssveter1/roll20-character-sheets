@@ -2568,7 +2568,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-one {
-    width: calc(100% - 141px);
+    width: calc(100% - 182px);
     text-align: left;
     margin-left: 41px;
 }
@@ -2578,17 +2578,25 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-two {
-    width: 60px;
+    width: 40px;
 }
 
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-three {
+    width: 30px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-four {
+    width: 31px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-col-five {
     width: 40px;
 }
 
 /* npc repeating items */
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-traits .sheet-row-stats .sheet-column-one {
     margin-left: 41px;
-    width: calc(100% - 142px);
+    width: calc(100% - 182px);
 }
 
 .charsheet .sheet-npc-box.sheet-npc-traits .sheet-toggle:checked ~ .sheet-row-details2 {
@@ -2614,10 +2622,18 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-npc-traits .repcontainer .repitem .sheet-cell.sheet-column-two {
-    width: 60px;
+    width: 40px;
 }
 
 .sheet-tab-npc-container .sheet-npc-traits .repcontainer .repitem .sheet-cell.sheet-column-three {
+    width: 30px;
+}
+
+.sheet-tab-npc-container .sheet-npc-traits .repcontainer .repitem .sheet-cell.sheet-column-four {
+    width: 31px;
+}
+
+.sheet-tab-npc-container .sheet-npc-traits .repcontainer .repitem .sheet-cell.sheet-column-five {
     width: 40px;
 }
 
@@ -2627,7 +2643,7 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-one {
-    width: calc(100% - 141px);
+    width: calc(100% - 281px);
     text-align: left;
     margin-left: 41px;
 }
@@ -2637,21 +2653,45 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-two {
-    width: 60px;
+    width: 25px;
 }
 
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-three {
+    width: 34px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-four {
+    width: 46px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-five {
+    width: 46px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-six {
+    width: 40px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-col-seven {
     width: 40px;
 }
 
 /* repeating items */
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-npc-input-field {
+    width: 80px;
+}
+
+.sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-npc-input-field input[type=text] {
+    width: 40px;
+}
+
 .sheet-tab-npc-container .sheet-npc-middle .sheet-npc-skills .sheet-row-stats .sheet-column-one {
     margin-left: 41px;
-    width: calc(100% - 142px);
+    width: calc(100% - 281px);
 }
 
 .charsheet .sheet-npc-box.sheet-npc-skills .sheet-toggle:checked ~ .sheet-row-details2 {
-    height: 104px
+    height: 122px
 }
 
 .charsheet .sheet-npc-box.sheet-npc-skills .sheet-cell.sheet-col-notebox {
@@ -2673,10 +2713,26 @@ input.sheet-toggle-encumbrance[type="checkbox"]:not(:checked) ~ div.sheet-encumb
 }
 
 .sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-two {
-    width: 60px;
+    width: 25px;
 }
 
 .sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-three {
+    width: 34px;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-four {
+    width: 46px;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-five {
+    width: 46px;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-six {
+    width: 40px;
+}
+
+.sheet-tab-npc-container .sheet-npc-skills .repcontainer .repitem .sheet-cell.sheet-column-seven {
     width: 40px;
 }
 
