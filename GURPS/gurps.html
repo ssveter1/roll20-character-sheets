@@ -26,7 +26,10 @@
 					<li>Skills tab. Fix Success Note bug, not showing on success results correctly.</li>
 					<li>Repeating skills and spells. Added checkbox to show success/fail notes on rolltable.</li>
 					<li>If critical fail on skill roll, show both associated fail and critical fail notes.</li>
-					<li>Grimoire Tab - Repeating Spells table. Move <b>REF</b> field to expanded notes area, replace with <b>ON</b> checkbox.</li>
+					<li>
+					    Grimoire Tab - Repeating Spells table. Move <b>REF</b> field to expanded notes area, replace with <b>ON</b> checkbox.
+					    resize Resisted by to add Being Maintained checkbox. NOTE: The penalties will automatically applied to spell levels.
+					</li>
 				</ul>
 				<label class="check"><input type="checkbox" name="attr_announcements_hide" value="1">&nbsp;<b><span>Hide until next update</span></b></label>
 				<button type="action" name="act_view_updates_tab" class="reset" />View All Updates</button>
@@ -4043,11 +4046,11 @@
 	<div class="sheet-tab6">
 
 		<!-- _____ _____ SPELLS SETUP _____ _____ -->
-		<div class="sheet-box sheet-spells">
-			<div class="sheet-table">
-				<div class="sheet-header">
-					<div class="sheet-cell"> Spells Based on: </div>
-					<div class="sheet-cell sheet-col11 margin-right">
+		<div class="box spells spell-stats">
+			<div class="table">
+				<div class="header spell-stats-header">
+					<div class="cell"> Spells Based on: </div>
+					<div class="cell margin-right">
 						<select name="attr_spell_base" title="Macro name: spell_base">
 							<option value="@{strength}">ST</option>
 							<option value="@{dexterity}">DX</option>
@@ -4058,9 +4061,33 @@
 							<option value="10">10</option>
 						</select>
 					</div>
-					<div class="sheet-cell"> Magery/PI/Bonus Level: </div>
-					<div class="sheet-cell sheet-col12">
+					<div class="cell"> Magery/PI/Bonus Level: </div>
+					<div class="cell margin-right">
 						<input type="number" name="attr_spell_bonus" value="0" title="Macro name: spell_bonus" />
+					</div>
+					<div class="cell">
+					    <div class="popup">On Penalty</div>
+						<div class="tooltip">
+						   Spell skill penalty based on number of <b>ON</b> spells.<br />
+						   <input type="hidden" name="attr_spell_on_count" value="0" />
+						   Number of spells <b>ON:</b> <span name="attr_spell_on_count"></span>.<br />
+						   <i>NOTE:</i> Use the options tab to adjust the penalty per spell <b>ON</b>.
+						</div>
+					</div>
+					<div class="cell margin-right">
+						<input type="number" name="attr_spell_on_penalty" value="0" title="Macro name: spell_on_penalty" readonly="readonly" />
+					</div>
+					<div class="cell">
+					    <div class="popup">Maintained Penalty</div>
+						<div class="tooltip">
+						   Skill penalty based on # of <b>maintained</b> spells.<br />
+						   <input type="hidden" name="attr_spell_maintained_count" value="0" />
+						   Number of spells <b>Maintained:</b> <span name="attr_spell_maintained_count"></span>.<br />
+						   <i>NOTE:</i> Use the options tab to adjust the penalty.
+						</div>
+					</div>
+					<div class="cell margin-right">
+						<input type="number" name="attr_spell_maintained_penalty" value="0" title="Macro name: spell_maintained_penalty" readonly="readonly" />
 					</div>
 				</div>
 			</div>
@@ -4080,7 +4107,7 @@
 					</div>
 					<div class="sheet-cell sheet-col1"></div>
 					<div class="sheet-cell sheet-col2">
-					    <div class="popup">Level</div>
+					    <div class="popup">LVL</div>
 						<div class="tooltip">
 						   Skill level with spell<br />
 						</div>
@@ -4111,7 +4138,7 @@
 						</div>
 					</div>
 					<div class="sheet-cell sheet-col7">
-					    <div class="popup">Resisted By</div>
+					    <div class="popup">RESIST</div>
 						<div class="tooltip">
 						   Resisted By
 						</div>
@@ -4144,7 +4171,15 @@
 					    <div class="popup">ON</div>
 						<div class="tooltip">
 						   Mark the spell as <b>ON</b><br />
-						   -1 skill penalty for each spell that is <b>ON</b><br />
+						   -1 skill penalty for each spell that is <b>ON</b>.<br />
+						   See B238 or M10.
+						</div>
+					</div>
+					<div class="sheet-cell sheet-col12">
+					    <div class="popup">MT</div>
+						<div class="tooltip">
+						   Mark the spell as <b>Being Maintained</b>.<br />
+						   -3 skill penalty for each spell that is <b>Maintained</b>.<br />
 						   See B238 or M10.
 						</div>
 					</div>
@@ -4179,7 +4214,7 @@
 							<input type="text" name="attr_spell_class" placeholder="Class" title="Macro table name: repeating_spells. Field name: spell_class" />
 						</div>
 						<div class="sheet-cell sheet-col7">
-							<input type="text" name="attr_spell_resisted_by" placeholder="Resisted By" title="Macro table name: repeating_spells. Field name: spell_resisted_by" />
+							<input type="text" name="attr_spell_resisted_by" placeholder="Resist" title="Macro table name: repeating_spells. Field name: spell_resisted_by" />
 						</div>
 						<div class="sheet-cell sheet-col8">
 							<input type="text" name="attr_duration" placeholder="Duration" title="Macro table name: repeating_spells. Field name: duration" />
@@ -4194,7 +4229,10 @@
 							<input type="text" name="attr_maintain" placeholder="Cost to Maintain" title="Macro table name: repeating_spells. Field name: maintain" />
 						</div>
 						<div class="sheet-cell sheet-col12">
-							<input type="checkbox" class="checkbox" title="Check to mark spell as on." name="attr_spell_on" />
+							<input type="checkbox" class="checkbox" title="Check to mark spell as on." name="attr_spell_on" value="1" />
+						</div>
+						<div class="sheet-cell sheet-col12">
+							<input type="checkbox" class="checkbox" title="Check to mark spell as on." name="attr_spell_maintained" value="1" />
 						</div>
 					</div> <!-- .sheet-row -->
 					
@@ -4354,7 +4392,10 @@
 		<li>Skills tab. Fix Success Note bug, not showing on success results correctly.</li>
 		<li>Repeating skills and spells. Added checkbox to show success/fail notes on rolltable.</li>
 		<li>If critical fail on skill roll, show both associated fail and critical fail notes.</li>
-		<li>Grimoire Tab - Repeating Spells table. Move <b>REF</b> field to expanded notes area, replace with <b>ON</b> checkbox.</li>
+		<li>
+		    Grimoire Tab - Repeating Spells table. Move <b>REF</b> field to expanded notes area, replace with <b>ON</b> checkbox.
+		    resize Resisted by to add Being Maintained checkbox.
+		</li>
 	</ul>
 	
 	<h4>Version: 1.6.8</h4>
@@ -5688,7 +5729,7 @@ If fail, attacker can opt to hit limb<br /></textarea>
 
 	var version = "1.6.9";
 	
-	var latestChangesDate = "10/29/2019";
+	var latestChangesDate = "11/12/2019";
 
 	var modCascade = true;
 	
