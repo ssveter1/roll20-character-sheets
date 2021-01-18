@@ -4308,6 +4308,7 @@
 
 				<ul>
 					<li><b>Bio\Misc</b> tab. Added <b>Apply</b> checkbox for Size Modifier. If checked, the Size Modifier will change the required character points for <b>Strength</b> and <b>Hit Points</b>. If you spent too many character points on Strength, you will get a warning message.</li>
+					<li>GCA Import. If character has Size Modifier 1 or higher, the <b>Apply</b> Size Modifier will be checked.</li>
 				</ul>
 
 				<label class="check"><input type="checkbox" name="attr_announcements_hide" value="1">&nbsp;<b><span data-i18n="hide-until-next-update">Hide until next update</span></b></label>
@@ -13135,6 +13136,7 @@ visualize what it will look like in chat.
 
 			<ul>
 				<li><b>Bio\Misc</b> tab. Added <b>Apply</b> checkbox for Size Modifier. If checked, the Size Modifier will change the required character points for <b>Strength</b> and <b>Hit Points</b>. If you spent too many character points on Strength, you will get a warning message.</li>
+				<li>GCA Import. If character has Size Modifier 1 or higher, the <b>Apply</b> Size Modifier will be checked.</li>
 			</ul>
 
 			<h4>Version: 2.6.1</h4>
@@ -20013,7 +20015,8 @@ visualize what it will look like in chat.
 			"firing_elevation",
 			"firing_acc",
 			"firing_aiming_bonus",
-			"firing_rof"
+			"firing_rof",
+			"size"
 		];
 			
 		getAttrs(fields, function(values) {
@@ -20021,6 +20024,11 @@ visualize what it will look like in chat.
 			let linearDistance = Number(values.firing_distance);
 			
 			let sizeMod = Number(values.firing_size_mod);
+
+			let characterSize = Number(values.size) || 0;
+
+			// calculate the final size modifier
+			sizeMod = sizeMod + characterSize;
 			
 			let speed = Number(values.firing_speed_difference);
 			
@@ -26919,6 +26927,7 @@ The attacker may choose to hit the original target or the limb you used to parry
 			"knockdown_check_mod": 0,
 			"unconscious_check_mod": 0,
 			"death_check_mod": 0,
+			"apply_size_modifier": 0,
 			"import_message": "Import has completed.",
 			"json_data": "",
 			"templates": [],
@@ -27031,8 +27040,12 @@ The attacker may choose to hit the original target or the limb you used to parry
 
 		let costOfLiving = "0";
 
-		if (jsonSM && jsonSM.level) {
-			sizeModifier = jsonSM.level;
+		if (jsonSM && jsonSM.score) {
+			sizeModifier = jsonSM.score;
+		}
+
+		if (sizeModifier > 0) {
+			runningTotals.apply_size_modifier = 1; 
 		}
 
 		if (jsonStatus && jsonStatus.score) {
