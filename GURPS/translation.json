@@ -641,7 +641,8 @@
   "nickname-label": "Nickname",
   "gender-label": "Gender",
   "size-modifier-label": "Size Modifier",
-  "size-modifier-tooltip": "This sheet does <strong>NOT</strong> auto adjust the cost values for STand Extra HP for a SM<br>that is greater than 0. To do that you can use a combination of Points and<br>MOD entries to get the desired value. (B15, B16, <strong>B19</strong>)",
+  "size-modifier-tooltip": "For more information see B15, B16, <strong>B19</strong>. <b>Note:</b> use the <i>Apply</i> checkbox to use Size Modify limitations to Strength and Extra Hit Points.",
+  "apply-size-modifier-tooltip": "If checked, character point costs for Strength and Hit Points will be modified.<br />See B15, B16, <strong>B19</strong>",
   "reach-modifier-label": "Reach Mod",
   "reach-modifier-tooltip": "Reach Modifier.<br />See Size Modifier and Reach, B402<br />When grappling, you get +1 To Hit per size modifier difference.",
   "main-hand-label": "Main Hand",
@@ -1063,5 +1064,7 @@
   "rules-label": "Rules",
   "import-label": "Import", 
   "import-notes-label": "Import Notes",
-  "import-notes-tooltip": "Import notes into <i>Bio\\Misc</i> fields and into <i>Notes</i> textboxes for repeating tables."
+  "import-notes-tooltip": "Import notes into <i>Bio\\Misc</i> fields and into <i>Notes</i> textboxes for repeating tables.",
+  "size-modifier-strength-warning-message": "<b style=\"color: red;\">Warning!</b> Due to your Size Modifier <span name=\"attr_size\" style=\"font-weight: bold;\"></span> you only need to spend <span name=\"attr_size_modifier_cp_strength_adjustment\" style=\"font-weight: bold;\"></span> character points for Strength. You may want to adjust the character points.",
+  "size-modifier-hit-point-warning-message": "<b style=\"color: red;\">Warning!</b> Due to your Size Modifier <span name=\"attr_size\" style=\"font-weight: bold;\"></span> you only need to spend <span name=\"attr_size_modifier_cp_hit_point_adjustment\" style=\"font-weight: bold;\"></span> character points for Extra Hit Points. You may want to adjust the character points."
 }

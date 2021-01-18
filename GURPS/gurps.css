@@ -1318,6 +1318,27 @@ input.sheet-module-roll:checked ~ .sheet-wrapper .sheet-module-off-roll,
 }
 
 /* -- GENERAL -- */
+.sheet-tab1 .sheet-warning-messages {
+    width: 100%;
+}
+
+.sheet-tab1 .sheet-warning-messages .sheet-message-box {
+    padding: 4px;
+    border: 1px solid red;
+    margin: .2em;
+}
+
+.sheet-tab1 .sheet-warning-messages .sheet-size-modifier-strength-message,
+.sheet-tab1 .sheet-warning-messages .sheet-size-modifier-hit-point-message {
+    display: none;
+}
+
+.sheet-tab1 .sheet-warning-messages input[name="attr_show_size_modifier_strength_message"][value="1"] ~ .sheet-size-modifier-strength-message, 
+.sheet-tab1 .sheet-warning-messages input[name="attr_size_modifier_cp_hit_point_adjustment"][value="1"] ~ .sheet-size-modifier-hit-point-message {
+    display: block;
+}
+
+
 .sheet-tab1-column2 {
     float: left;
     width: calc(100% - 180px - 100px - .8em);
@@ -1947,7 +1968,11 @@ span.sheet-emphatic {
 }
 
 .sheet-general-bio .sheet-row .sheet-col-half {
-    width: calc(100% - 294px);
+    width: calc(100% - 386px);
+} 
+
+.sheet-general-bio .sheet-row .sheet-col-apply-size-modifier {
+    width: 50px;
 } 
 
 .sheet-general-bio .sheet-row .sheet-col-input {

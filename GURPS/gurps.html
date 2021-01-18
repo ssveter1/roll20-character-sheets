@@ -4307,10 +4307,7 @@
 				</h4>
 
 				<ul>
-					<li>Fix spelling error for drowsy. Reported by Charles</li>
-					<li>Fix bug with checkbox <b>Show casting details on roll template:</b>. The bug was if checked no roll is made, if unchecked the roll is made. Reported by Charles.</li>
-					<li>Fix bug for mini-roll modifier tool. If Encumbrance level changed, the total may not calculate correctly. Reported by PL M.</li>
-					<li>Fix but with range calculator. Math error calculating total distance when firing up. Reported by Idle</li>
+					<li><b>Bio\Misc</b> tab. Added <b>Apply</b> checkbox for Size Modifier. If checked, the Size Modifier will change the required character points for <b>Strength</b> and <b>Hit Points</b>. If you spent too many character points on Strength, you will get a warning message.</li>
 				</ul>
 
 				<label class="check"><input type="checkbox" name="attr_announcements_hide" value="1">&nbsp;<b><span data-i18n="hide-until-next-update">Hide until next update</span></b></label>
@@ -4335,6 +4332,24 @@
 	
 	<!-- ===== ===== ===== ===== GENERAL TAB ===== ===== ===== ===== -->
 	<div class="tab1">
+
+		<div class="warning-messages">
+
+			<input type="hidden" name="attr_show_size_modifier_strength_message" value="" />
+			<input type="hidden" name="attr_size_modifier_cp_strength_adjustment" value="0" />
+			<div class="message-box size-modifier-strength-message">
+				<span data-i18n="size-modifier-strength-warning-message"><b style="color: red;">Warning!</b> Due to your Size Modifier <span name="attr_size"></span> you only need to spend <span name="attr_size_modifier_cp_strength_adjustment"></span> character points for Strength.</span>
+			</div>
+
+			<input type="hidden" name="attr_show_size_modifier_hit_point_message" value="" />
+			<input type="hidden" name="attr_size_modifier_cp_hit_point_adjustment" value="0" />
+			<div class="message-box size-modifier-hit-point-message">
+				<span data-i18n="size-modifier-hit-point-warning-message"><b style="color: red;">Warning!</b> Due to your Size Modifier <span name="attr_size"></span> you only need to spend <span name="attr_size_modifier_cp_hit_point_adjustment"></span> character points for Extra Hit Points.</span>
+			</div>
+
+		</div>
+
+		<div class="tab1-container">
 
 		<!-- _____ _____ ATTRIBUTE BOX _____ _____ -->
 		<div class="box attribute" style="float: left;">
@@ -4375,15 +4390,15 @@ Cost reduced by -10% (Max -80%) per SM+1 (B15)
 							</span>
 						</div>
 						<div class="cell col1">
-							<input type="number" name="attr_strength_display" value="10" readonly="readonly" title="Macro name: strength_display" />
-							<input type="hidden" name="attr_strength_halved" value="0" title="Macro name: strength_halved" />
-							<input type="hidden" name="attr_strength" value="10" title="Macro name: strength" />
+							<input type="number" name="attr_strength_display" value="10" readonly="readonly" title="Macro: @{strength_display}" />
+							<input type="hidden" name="attr_strength_halved" value="0" title="Macro: @{strength_halved}" />
+							<input type="hidden" name="attr_strength" value="10" title="Macro: @{strength}" />
 						</div>
 						<div class="cell col2">
-							<input type="number" name="attr_strength_mod" value="0" step="1" title="Macro name: strength_mod" />
+							<input type="number" name="attr_strength_mod" value="0" step="1" title="Macro: @{strength_mod}" />
 						</div>
 						<div class="cell col3">
-							<input type="number" name="attr_strength_points" value="0" step="10" title="Macro name: strength_points" />
+							<input type="number" name="attr_strength_points" value="0" step="10" title="Macro: @{strength_points}" />
 						</div>
 						<div class="cell col4">
 							<button type="roll" value="@{roll}&{template:skillRoll} {{sheetStyle=@{sheetstyle}}} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Strength Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{strength_display} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsST" />
@@ -4400,13 +4415,13 @@ Cost reduced by -10% (Max -80%) per SM+1 (B15)
 							</span>
 						</div>
 						<div class="cell col1">
-							<input type="number" name="attr_dexterity" value="10" readonly="readonly" title="Macro name: dexterity" >
+							<input type="number" name="attr_dexterity" value="10" readonly="readonly" title="Macro: @{dexterity}" >
 						</div>
 						<div class="cell col2">
-							<input type="number" name="attr_dexterity_mod" value="0" step="1" title="Macro name: dexterity_mod" />
+							<input type="number" name="attr_dexterity_mod" value="0" step="1" title="Macro: @{dexterity_mod}" />
 						</div>
 						<div class="cell col3">
-							<input type="number" name="attr_dexterity_points" value="0" step="20" title="Macro name: dexterity_points" />
+							<input type="number" name="attr_dexterity_points" value="0" step="20" title="Macro: @{dexterity_points}" />
 						</div>
 						<div class="cell col4">
 							<button type="roll" value="@{roll}&{template:skillRoll} {{sheetStyle=@{sheetstyle}}} {{type=Attribute Check}} {{activeDefense=[[0]]}} {{showSuccessLabel=[[1]]}} {{characterName=@{character_name}}} {{skillName=Dexterity Roll}} {{rollResult=[[3d6]]}} {{effectiveSkill=[[@{dexterity} + @{modifier}]]}} {{useCriticalPlusTen=[[@{use_critical_plus_10}]]}}" name="roll_vsDX" />
@@ -6744,6 +6759,7 @@ and Advantages.
 			</div> <!-- .table -->
 		</div> <!-- box points -->
 
+		</div>
 	</div> <!-- tab1 -->
 
     <!-- ===== ===== ===== ===== TRAITS TAB ===== ===== ===== ===== -->
@@ -7458,14 +7474,23 @@ PU2:126 = Power-Ups 2. Page 126<br />
 							<span data-i18n="size-modifier-label">Size Modifier</span>
 						</div>
 						<span class="tooltip">
-							<span data-i18n="size-modifier-tooltip">
-This sheet does <strong>NOT</strong> auto adjust the cost values for ST	and Extra HP for a SM<br />
-that is greater than 0. To do that you can use a combination of Points and<br />
-MOD entries to get the desired value. (B15, B16, <strong>B19</strong>)
-							</span>
+							<span data-i18n="size-modifier-tooltip">For more information see B15, B16, <strong>B19</strong>. <b>Note:</b> use the <i>Apply</i> checkbox to use Size Modify limitations to Strength and Extra Hit Points.</span>
+						</span>
 					</div>
 					<div class="cell col-half">
 						<input type="number" name="attr_size" value="0" title="Macro name: size" />
+					</div>
+
+					<div class="cell col-apply-size-modifier label">
+						<div class="popup">
+							<span data-i18n="apply-label">Apply</span>
+						</div>
+						<span class="tooltip">
+							<span data-i18n="close-reach-tooltip">If checked, character point costs for Strength and Hit Points will be modified.<br />See B15, B16, <strong>B19</strong></span>
+						</span>
+					</div>
+					<div class="cell col-input">
+						<input type="checkbox" name="attr_apply_size_modifier" value="1" title="Macro: @{apply_size_modifier}" />
 					</div>
 
 					<div class="cell col0 label">
@@ -7474,6 +7499,7 @@ MOD entries to get the desired value. (B15, B16, <strong>B19</strong>)
 						</div>
 						<span class="tooltip">
 							<span data-i18n="reach-modifier-tooltip">Reach Modifier.<br />See Size Modifier and Reach, B402<br />When grappling, you get +1 To Hit per size modifier difference.</span>
+						</span>
 					</div>
 					<div class="cell col-input">
 						<input type="number" name="attr_reach" value="0" readonly="readonly" title="Macro name: reach" />
@@ -7485,6 +7511,7 @@ MOD entries to get the desired value. (B15, B16, <strong>B19</strong>)
 						</div>
 						<span class="tooltip">
 							<span data-i18n="close-reach-tooltip">If checked, a reach <span class="emphatic">C</span> weapon increases to reach 1, but no other effects.<br />See Size Modifier and Reach, B402</span>
+						</span>
 					</div>
 					<div class="cell col-input">
 						<input type="checkbox" name="attr_is_close_reach" title="Macro name: is_close_reach" />
@@ -13107,6 +13134,14 @@ visualize what it will look like in chat.
 			<p>Pull Request: <span name="attr_latest_changes"></span></p>
 
 			<ul>
+				<li><b>Bio\Misc</b> tab. Added <b>Apply</b> checkbox for Size Modifier. If checked, the Size Modifier will change the required character points for <b>Strength</b> and <b>Hit Points</b>. If you spent too many character points on Strength, you will get a warning message.</li>
+			</ul>
+
+			<h4>Version: 2.6.1</h4>
+
+			<p>Pull Request: 1/9/2021</p>
+
+			<ul>
 				<li>Fix spelling error for drowsy. Reported by Charles</li>
 				<li>Fix bug with checkbox <b>Show casting details on roll template:</b>. The bug was if checked no roll is made, if unchecked the roll is made. Reported by Charles.</li>
 				<li>Fix bug for mini-roll modifier tool. If Encumbrance level changed, the total may not calculate correctly. Reported by PL M.</li>
@@ -13115,7 +13150,7 @@ visualize what it will look like in chat.
 
 			<h4>Version: 2.6.0</h4>
 
-			<p>Pull Request: 1/4/2020</p>
+			<p>Pull Request: 1/4/2021</p>
 
 			<ul>
 				<li>Options tab. Created sub-tabs for <b>Sheet Options</b>, <b>Rules</b>, <b>Import</b></li>
@@ -15514,9 +15549,9 @@ visualize what it will look like in chat.
 
 	var noop = function () {}; // do nothing callback function.
 
-	var version = "2.6.1";
+	var version = "2.6.2";
 
-	var latestChangesDate = "1/10/2020";
+	var latestChangesDate = "1/18/2021";
 
 	var modCascade = true;
 	
@@ -16649,17 +16684,109 @@ visualize what it will look like in chat.
 	}
 	
 	// Strength Change
-	on('change:strength_points change:strength_mod change:defense_knockback_hitpoints_mod', function (e) {
+	on('change:strength_points change:strength_mod change:defense_knockback_hitpoints_mod change:size change:apply_size_modifier', function (e) {
 		updateST();
 	});
 
+	/**
+	 * Get the size modifier percentage for use with 
+	 * Strength and extra HP character point costs
+	 * 
+	 * @param int sizeModifier size of character
+	 * 
+	 * @return int
+	 */
+	function getSizeModifierPercentage(sizeModifier) {
+
+		let percentModifier = 0;
+
+		// make sure we have an integer
+		if (Number.isInteger(sizeModifier) === false) {
+			sizeModifier = Math.floor(sizeModifier);
+		}
+
+		if (1 <= sizeModifier && sizeModifier <= 8) {
+			percentModifier = -10 * sizeModifier;
+		} else if (sizeModifier > 8) {
+			percentModifier = -80;
+		}
+		
+		return percentModifier;
+
+	}
+
+	/**
+	 * Get the point cost per level based on size modifier.
+	 * 
+	 * @param bool applySizeModifier Should size modifier by applied?
+	 * @param int  sizeModifier      Size of character
+	 * @param int  basePointsPerLevel Cost per level for an attribute. ST is 10 per level. HP is 2 per level
+	 */
+	function getSizeModifierPointsPerLevel(applySizeModifier, sizeModifier, basePointsPerLevel) {
+
+		let pointsPerLevel = basePointsPerLevel;
+
+		// make sure we have an integer
+		if (Number.isInteger(sizeModifier) === false) {
+			sizeModifier = Math.floor(sizeModifier);
+		}
+
+		if (applySizeModifier && sizeModifier > 0) {
+
+			let percentModifier = getSizeModifierPercentage(sizeModifier);
+
+			let decimalModifier = percentModifier / 100;
+
+			// formula ST example: points per level = 10
+			//                     basePointsPerLevel + (basePointsPerLevel * percentModifier) = pointsPerLevel
+			//                     10 + (10 * 0) = 10		-- size modifier = 0
+			//                     10 + (10 * -10%) = 9		-- size mofifier = 1 | -10% = -.1
+			//                     10 + (10 * -20%) = 8		-- size modifier = 2
+			// formula HP example: points per level = 2
+			//                     2 + (2 * -10%) = 2
+			pointsPerLevel = basePointsPerLevel + (basePointsPerLevel * decimalModifier);
+
+		}
+
+		return pointsPerLevel;
+
+	}
+
 	// Update Strength
 	function updateST(callback) {
+
 		callback = callback || noop;
+		
 		console.log('********* updateST *********');
-		getAttrs(['strength_points', 'strength_mod', 'strength_halved', 'defense_knockback_hitpoints_mod'], function(v) {
+		
+		getAttrs(['strength_points', 'strength_mod', 'strength_halved', 'defense_knockback_hitpoints_mod', 'apply_size_modifier', 'size'], function(v) {
 		    
-			let base = 10 + ((+v.strength_points || 0) / 10 | 0);
+			let applySizeModifier = (v.apply_size_modifier == "1");
+
+			let sizeModifier = Number(v.size) || 0;
+
+			let characterPoints = Number(v.strength_points) || 0;
+
+			let pointsPerLevel = getSizeModifierPointsPerLevel(applySizeModifier, sizeModifier, 10);
+
+			let strengthModByCharacterPoints = Math.floor(characterPoints/pointsPerLevel);
+
+			// check for remainder. 
+			let hasRemainder = (characterPoints % pointsPerLevel) >= 1;
+
+			let pointsNeededForStrength = 0;
+
+			let showMessage = 0;
+
+			if (applySizeModifier && sizeModifier > 0 && hasRemainder) {
+
+				showMessage = 1;
+
+				pointsNeededForStrength = Math.floor(pointsPerLevel * strengthModByCharacterPoints);
+
+			}
+
+			let base = 10 + strengthModByCharacterPoints;
 			
 			let mod = +v.strength_mod || 0;
 			
@@ -16680,7 +16807,9 @@ visualize what it will look like in chat.
 				strength_base: base,
 				strength: base + mod,
 				strength_display: st_display,
-				knockback_points: st_display - 2 + knockbackMod
+				knockback_points: st_display - 2 + knockbackMod,
+				show_size_modifier_strength_message: showMessage,
+				size_modifier_cp_strength_adjustment: pointsNeededForStrength
 			}, {silent: false}, callback);
 		});
 	}
@@ -16743,7 +16872,7 @@ visualize what it will look like in chat.
 	}
 
 	// HP
-	on('change:strength change:hit_points_points change:hit_points_mod', function (e) {
+	on('change:strength change:hit_points_points change:hit_points_mod change:apply_size_modifier change:size', function (e) {
 		
 		// after updating hit points, update thresholds
 		updateHP(updateHitPointThresholds);
@@ -16757,11 +16886,36 @@ visualize what it will look like in chat.
 		
 		callback = callback || noop;
 		
-		getAttrs(['strength', 'strength_base', 'hit_points_points', 'hit_points_mod'], function(v) {
+		getAttrs(['strength', 'strength_base', 'hit_points_points', 'hit_points_mod', 'apply_size_modifier', 'size'], function(v) {
 		
-			let base = (modCascadeAll ? +v.strength : +v.strength_base) + ((+v.hit_points_points || 0) / 2 | 0);
+			let applySizeModifier = (v.apply_size_modifier == "1");
+
+			let sizeModifier = Number(v.size) || 0;
+
+			let characterPoints = Number(v.hit_points_points) || 0;
+
+			let pointsPerLevel = getSizeModifierPointsPerLevel(applySizeModifier, sizeModifier, 2);
+
+			let modByCharacterPoints = Math.floor(characterPoints/pointsPerLevel);
+
+			// check for remainder. 
+			let hasRemainder = (characterPoints % pointsPerLevel) >= 1;
+
+			let pointsNeededForHitPoints = 0;
+
+			let showMessage = 0;
+
+			if (applySizeModifier && sizeModifier > 0 && hasRemainder) {
+
+				showMessage = 1;
+
+				pointsNeededForHitPoints = Math.floor(pointsPerLevel * modByCharacterPoints);
+
+			}
+			
+			let base = (modCascadeAll ? +v.strength : +v.strength_base) + modByCharacterPoints;
 		
-			let mod = +v.hit_points_mod;
+			let mod = +v.hit_points_mod || 0;
 
 			let hitPoints = base + mod;
 
@@ -16769,7 +16923,9 @@ visualize what it will look like in chat.
 		
 			setAttrs({
 				hit_points_max: hitPoints,
-				major_wound_threshold: majorWound
+				major_wound_threshold: majorWound,
+				show_size_modifier_hit_point_message: showMessage,
+				size_modifier_cp_hit_point_adjustment: pointsNeededForHitPoints
 			}, {silent: false}, callback);
 		
 		});
