@@ -3968,7 +3968,15 @@ input[type="hidden"][name="attr_show_roll_modifiers"][value="1"] ~ .sheet-modal 
     display: none;
 }
 
+.sheet-modal-main-content input[name="attr_display_melee_maneuvers_section"][value="0"] ~ .sheet-tooltiptext.sheet-melee {
+    display: none;
+}
+
 .sheet-modal-main-content input[name="attr_display_ranged_maneuvers_section"][value="0"] ~ div.sheet-ranged-maneuvers {
+    display: none;
+}
+
+.sheet-modal-main-content input[name="attr_display_ranged_maneuvers_section"][value="0"] ~ .sheet-tooltiptext.sheet-ranged {
     display: none;
 }
 
