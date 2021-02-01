@@ -4296,7 +4296,36 @@
 	<!-- /HIDDEN FIELDS -->
 
 	<div class="heading-character-name">
-		<h3><span name="attr_character_name"></span></h3>	
+		
+		<div style="float:right;">
+
+			<!-- see: https://codepen.io/YozhEzhi/pen/gcLpI/ -->
+			<input type="hidden" name="attr_display_roll_option_header" />
+			<div class="roll-options">
+				
+				<label>
+					<input type="radio" name="attr_roll_option_header" value="public" />
+					<span data-i18n="public-rolls-label">Public Rolls</span>
+				</label>
+				<label>
+					<input type="radio" name="attr_roll_option_header" value="private" />
+					<span data-i18n="private-rolls-label">Private Rolls</span>
+				</label>
+
+				<input type="hidden" name="attr_display_custom_roll_option_header" />
+				<label class="custom-roll-button">
+					<input type="radio" name="attr_roll_option_header" value="custom" />
+					<span name="attr_custom_roll_macro_label"></span>
+				</label>
+
+			</div>
+			
+		</div>
+
+		<div style="float:left;">
+			<h3><span name="attr_character_name"></span></h3>
+		</div>
+			
 	</div>
 
 	<div class="update-alert">
@@ -13569,6 +13598,28 @@ visualize what it will look like in chat.
 							<span data-i18n="public-or-private-rolls-label">Public or Private Rolls</span>
 						</h4>
 						
+						<input type="checkbox" name="attr_display_roll_option_header" value="1" />
+						<span class="popup">
+							<span data-i18n="display-in-header-label">Display Roll Options in Header</span>
+						</span>
+						<span class="tooltip">
+							<span data-i18n="display-in-header-tooltip">
+								If checked, the options for <b>Public Rolls</b> and <b>Private Rolls</b> will be displayed to the right of the character name above the tabs.
+							</span>
+						</span>
+						<br />
+
+						<input type="checkbox" name="attr_display_custom_roll_option_header" value="1" />
+						<span class="popup">
+							<span data-i18n="display-custom-in-header-label">Display Custom Option in Header</span>
+						</span>
+						<span class="tooltip">
+							<span data-i18n="display-custom-in-header-tooltip">
+								If checked, button name for <b>Custom Rolls</b> will be displayed to the right of the character name above the tabs.
+							</span>
+						</span>
+						<br />
+
 						<input type="radio" name="attr_roll_option" value="public" checked="checked">
 						<span class="popup">
 							<span data-i18n="public-rolls-label">Public Rolls</span>
@@ -13589,7 +13640,7 @@ visualize what it will look like in chat.
 						
 						<input type="radio" name="attr_roll_option" value="private">
 						<span class="popup">
-							<span data-i18n="private-rols-label">Private Rolls</span>
+							<span data-i18n="private-rolls-label">Private Rolls</span>
 						</span>
 						<span class="tooltip">
 							<span data-i18n="private-rolls-tooltip">Only the GM will see your skill<br>level and the result.</span>
@@ -13607,14 +13658,18 @@ visualize what it will look like in chat.
 						<div>
 							<div>
 								<b>
-									<span data-i18n="button-label">Button Label</span>
+									<span data-i18n="button-label">Button Name</span>
 								</b><br>
-								<input type="text" name="attr_custom_roll_macro_label" value="">
+								<input type="text" name="attr_custom_roll_macro_label" value="Blind Roll">
 							</div>
 							<div>
-								<b>
+								<span class="popup">
 									<span data-i18n="macro-label">Macro</span>
-								</b><br>
+								</span>
+								<span class="tooltip">
+									<span data-i18n="macro-label-tooltip"><b>NOTE:</b> In order to use this option, you will need an API script that can intercept the data for the roll and then send a message to the GM.<br /><br />For an example, see the <b>Blind Roll</b> API script, https://app.roll20.net/forum/permalink/5064809/</span>
+								</span>
+								<br />
 								<input type="text" name="attr_custom_roll_macro" value="">
 							</div>
 						</div>
@@ -30520,9 +30575,11 @@ The attacker may choose to hit the original target or the limb you used to parry
 
 			}
 
-			setAttrs({
-				roll: rollMacro
-			}, {silent: true});
+			setAttrs({roll: rollMacro}, {silent: true}, () => {
+
+				setAttrs({roll_option_header: rollOption});
+
+			});
 
 		});
 
@@ -30553,10 +30610,23 @@ The attacker may choose to hit the original target or the limb you used to parry
 				rollOption = "custom";
 			}
 
-			setAttrs({roll_option: rollOption}, {silent: true});
+			setAttrs({roll_option: rollOption, roll_option_header: rollOption}, {silent: true});
 
 		});
 
 	}
+
+	// if roll option in header changes, update the sheet option
+	on("change:roll_option_header", event => {
+
+		getAttrs(["roll_option_header"], values => {
+
+			let option = values.roll_option_header;
+
+			setAttrs({roll_option: option});
+
+		});
+
+	});
 
 </script>

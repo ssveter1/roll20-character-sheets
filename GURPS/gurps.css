@@ -313,6 +313,61 @@ Go to  <select name="attr_sheetstyle"/> on the sheet HTML to add a new option, w
     text-align: left;
 }
 
+/* roll option buttons */
+
+.sheet-heading-character-name .sheet-roll-options {
+    display: none;
+}
+
+.sheet-heading-character-name .sheet-roll-options .sheet-custom-roll-button {
+    display: none;
+}
+
+input[name="attr_display_roll_option_header"][value="1"] ~ .sheet-roll-options {
+    display: block;
+}
+
+input[name="attr_display_custom_roll_option_header"][value="1"] ~ .sheet-custom-roll-button {
+    display: inline-block;
+}
+
+.sheet-heading-character-name .sheet-roll-options {
+    clear: both;
+    height: 27px;
+    width: auto;
+}
+
+.sheet-heading-character-name .sheet-roll-options label {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    display: inline-block;
+}
+
+.sheet-heading-character-name .sheet-roll-options label input[type="radio"] {
+    display: none;
+}
+
+.sheet-heading-character-name .sheet-roll-options > label > span {
+    display: block;
+    padding: 3px;
+    cursor: pointer;
+    transition: background-color .3s;
+    font-size: 11px;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    line-height: 18px;
+    background: var(--input-disabled-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.sheet-heading-character-name .sheet-roll-options > label > span:hover,
+.sheet-heading-character-name .sheet-roll-options> label > input:checked + span {
+  background: var(--secondary-highlight);
+  color: white;
+}
+
 /* -- Announcements -- */
 input[name="attr_announcements_hide"][value="1"] ~ .sheet-update-alert {
     display: none !important;
