@@ -13569,44 +13569,57 @@ visualize what it will look like in chat.
 							<span data-i18n="public-or-private-rolls-label">Public or Private Rolls</span>
 						</h4>
 						
-						<input type="radio" name="attr_roll" value="" checked="true" />
+						<input type="radio" name="attr_roll_option" value="public" checked="checked">
 						<span class="popup">
 							<span data-i18n="public-rolls-label">Public Rolls</span>
 						</span>
 						<span class="tooltip">
-							<span data-i18n="public-rolls-tooltip">
-								All players will be able to see<br />
-								your skill level, roll and results.
-							</span>
+							<span data-i18n="public-rolls-tooltip">All players will be able to see<br>your skill level, roll and results.</span>
 						</span>
-						<br />
+						<br>
 						
-						<input type="radio" name="attr_roll" value="/w gm --l " />
+						<input type="radio" name="attr_roll_option" value="deprecated">
 						<span class="popup">
 							<span data-i18n="private-skill-levels-label">Private Skill Levels <em>deprecated</em></span>
 						</span>
 						<span class="tooltip">
-							<span data-i18n="private-skill-levels-tooltip">
-								Only the GM will be able to see<br />
-								your skill level, but all players<br />
-								will see the result.<br />
-								<b>NOTE:</b> This now behaves just like Private Rolls
-							</span>
+							<span data-i18n="private-skill-levels-tooltip">Only the GM will be able to see<br>your skill level, but all players<br>will see the result.<br><b>NOTE:</b> This now behaves just like Private Rolls</span>
 						</span>
-						<br />
+						<br>
 						
-						<input type="radio" name="attr_roll" value="/w gm " />
+						<input type="radio" name="attr_roll_option" value="private">
 						<span class="popup">
 							<span data-i18n="private-rols-label">Private Rolls</span>
 						</span>
 						<span class="tooltip">
-							<span data-i18n="private-rolls-tooltip">
-								Only the GM will see your skill<br />
-								level and the result.
-							</span>
+							<span data-i18n="private-rolls-tooltip">Only the GM will see your skill<br>level and the result.</span>
 						</span>
-						
-					</div><!-- end public/private rolls -->
+						<br>
+
+						<input type="radio" name="attr_roll_option" value="custom">
+						<span class="popup">
+							<span data-i18n="custom-rolls-label">Custom Rolls</span>
+						</span>
+						<span class="tooltip">
+							<span data-i18n="custom-rolls-tooltip">Use this option to use a custom macro with the Roll Template.<br><br><b style="color:red;">Important:</b> When entering the macro, be sure to add a <i>space</i> character to the end!<br><br>Add a <b>Button Label</b> to display a button in the header.<br><br>For example, the Private Rolls option adds <i style="color:gray;">/w gm</i> to the beginning of the roll, which means whisper to GM.<br><br>Another example is adding a blind roll option, where <b>only</b> the GM sees the roll. This example uses the <i>Blind Roll</i> API script, see https://app.roll20.net/forum/permalink/5064809/.<br>Set Label = <b>Blind Roll</b>, set Macro = <b>!broll</b></span>
+						</span>
+
+						<div>
+							<div>
+								<b>
+									<span data-i18n="button-label">Button Label</span>
+								</b><br>
+								<input type="text" name="attr_custom_roll_macro_label" value="">
+							</div>
+							<div>
+								<b>
+									<span data-i18n="macro-label">Macro</span>
+								</b><br>
+								<input type="text" name="attr_custom_roll_macro" value="">
+							</div>
+						</div>
+
+					</div>
 					
 					<div class="option-container">
 						<h4>
@@ -15550,7 +15563,7 @@ visualize what it will look like in chat.
 				{{/allprops() title subtitle roll target desc templateType sheetStyle}}
 
 				{{#desc}}
-				<div class="sheet-desc">{{desc}}</div>
+				<div class="desc">{{desc}}</div>
 				{{/desc}}
 
 			</div>
@@ -16410,6 +16423,8 @@ visualize what it will look like in chat.
 	on('sheet:opened', function() {
 	    
 		console.log('********* Sheet Opened *********');
+
+		syncRollOptions();
 		
 		setAttrs({inventory_fixed_digits: 1}); 
 
@@ -30473,6 +30488,74 @@ The attacker may choose to hit the original target or the limb you used to parry
 		}
 
 		return notes;
+
+	}
+
+	// check for roll options and changes to custom roll macro
+	on("change:custom_roll_macro change:roll_option", event => {
+
+		getAttrs(["roll_option", "custom_roll_macro"], values => {
+
+			let rollOption = values.roll_option;
+
+			rollOption = rollOption.trim();
+
+			let customMacro = values.custom_roll_macro;
+
+			customMacro = customMacro.trim();
+
+			let rollMacro = "";
+
+			if (rollOption === "deprecated") {
+
+				rollMacro = "/w gm --l ";
+
+			} else if (rollOption === "private") {
+
+				rollMacro = "/w gm ";
+
+			} else if (rollOption === "custom") {
+
+				rollMacro = customMacro;
+
+			}
+
+			setAttrs({
+				roll: rollMacro
+			}, {silent: true});
+
+		});
+
+	});
+
+	/**
+	 * Needed to add a new attr_roll_option to handle
+	 * a custom roll macro. This code makes sure the 
+	 * correct roll option is selected when the sheet opens.
+	 */
+	function syncRollOptions() {
+
+		getAttrs(["roll"], values => {
+
+			let rollValue = values.roll;
+
+			let rollOption;
+
+			rollValue = rollValue.trim();
+
+			if (rollValue === "") {
+				rollOption = "public";
+			} else if (rollValue === "/w gm --l ") {
+				rollOption = "deprecated";
+			} else if (rollValue === "/w gm ") {
+				rollOption = "private";
+			} else {
+				rollOption = "custom";
+			}
+
+			setAttrs({roll_option: rollOption}, {silent: true});
+
+		});
 
 	}
 
