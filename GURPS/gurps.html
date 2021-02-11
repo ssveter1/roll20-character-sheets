@@ -14952,6 +14952,15 @@ visualize what it will look like in chat.
                     </td>
                 </tr>
                 {{/effectiveSkill}}
+
+				{{#rollDiff}}
+				<tr>
+                    <td class="label">Difference:</td>
+                    <td>
+                        {{rollDiff}}
+                    </td>
+                </tr>
+				{{/rollDiff}}
 				
 				<!-- Roll Modifier Tool Sections -->
 				{{#rollTotal() useModToll 1}}
